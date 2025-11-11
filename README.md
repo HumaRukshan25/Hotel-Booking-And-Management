@@ -22,7 +22,7 @@ uvicorn main:app --reload
 * `app` = FastAPI instance inside `main.py`
 * `--reload` = auto-reload on changes
 
-7. Access API
+7. Access API in browser 
 http://127.0.0.1:8000/users/
 http://127.0.0.1:8000/hotels/
 http://127.0.0.1:8000/bookings/
@@ -47,14 +47,20 @@ GET /bookings/{id} → Get booking by ID
 POST /bookings/ → Create a new booking
 PUT /bookings/{id} → Update a booking
 DELETE /bookings/{id} → Cancel a booking
-------------------------------------------------------------------------------------------------------------------------------------------------------->
- **Windows setup for ReactJs and vite frontend**
 
- 1. Create React Vite project
+
+8. test api using Postman or Swagger
+   * postman app
+   * Access Swagger UI Open a browser and go to:
+http://127.0.0.1:8000/docs
+------------------------------------------------------------------------------------------------------------------------------------------------------->
+ **Windows setup for ReactJS and Vite frontend**
+
+ 1. Create a React Vite project
   npm create vite@latest ReactjsAts
 Choose React
 Choose JavaScript
- 2. Navigate to project folder
+ 2. Navigate to the project folder
    cd learningreact
  3. Install dependencies
       npm install
@@ -62,7 +68,7 @@ Choose JavaScript
     npm install react-router-dom axios
  5. Run development server
     npm run dev
-Browser : http://localhost:5173/
+Browser: http://localhost:5173/
 
    
 
