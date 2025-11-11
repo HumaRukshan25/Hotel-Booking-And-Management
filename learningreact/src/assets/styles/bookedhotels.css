@@ -1,0 +1,115 @@
+:root {
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --accent: #ff9f1c;
+  --muted: #6b7280;
+  --border: #e6e9ef;
+  --radius: 12px;
+  --shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #eaebed);
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Container for all bookings */
+.bookings-container {
+  min-height: 100vh;
+  background: var(--bg);
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Page heading */
+.bookings-container h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #0f1724;
+  text-align: center;
+}
+
+/* Message when no bookings */
+.bookings-container p {
+  font-size: 1rem;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Individual hotel card */
+.hotel-card {
+  width: 100%;
+  max-width: 500px;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  margin-bottom: 25px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease-in-out;
+}
+
+.hotel-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Hotel title */
+.hotel-card h3 {
+  font-size: 1.4rem;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+/* Paragraphs */
+.hotel-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 2px 0;
+}
+
+/* Hotel image */
+.hotel-card img {
+  border-radius: 8px;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+
+/* Cancel button */
+.delete-btn {
+  padding: 10px 14px;
+  background-color: #8e1e1c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.15s ease, opacity 0.2s ease;
+  margin-top: 10px;
+}
+
+.delete-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+.delete-btn:active {
+  transform: scale(0.97);
+}
+
+/* Total amount display */
+.bookings-container h3 span {
+  font-weight: 700;
+  color: green;
+}

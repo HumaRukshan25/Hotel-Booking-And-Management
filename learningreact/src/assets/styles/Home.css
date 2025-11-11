@@ -1,0 +1,78 @@
+.home-container {
+  height: 100vh;
+  background: url("https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg?cs=srgb")
+    center/cover no-repeat;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Dark overlay */
+.overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.103);
+  top: 0;
+  left: 0;
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+
+/* .title {
+  font-size: 55px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  color: aliceblue;
+}
+
+.subtitle {
+  font-size: 22px;
+  margin-bottom: 25px;
+  opacity: 0.9;
+  color: rgb(7, 7, 7);
+} */
+
+
+/* Hero content title */
+.title {
+  font-size: 4rem;           /* slightly responsive size */
+  font-weight: 700;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  color: #fff;               /* bright white for contrast */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* subtle shadow for readability */
+}
+
+/* Hero content subtitle */
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  color: #f0f0f0;            /* soft white for contrast */
+  opacity: 0.85;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+  line-height: 1.4;
+}
+
+.explore-btn {
+  padding: 14px 28px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 6px;
+  border: none;
+  background: #198754;
+  color: white;
+  transition: 0.3s ease-in-out;
+}
+
+.explore-btn:hover {
+  background: #146c43;
+  transform: scale(1.08);
+}

@@ -1,0 +1,100 @@
+:root {
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --accent: #ff9f1c;
+  --muted: #6b7280;
+  --border: #e6e9ef;
+  --radius: 12px;
+  --shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* Full page layout */
+.contact-form {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 100%);
+  padding: 40px 16px;
+  box-sizing: border-box;
+}
+
+/* Form card */
+.formdata {
+  width: 100%;
+  max-width: 500px;
+  background: var(--card);
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Form header */
+.formdata .header {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0f1724;
+  margin-bottom: 20px;
+}
+
+/* Inputs and textarea */
+.formdata input,
+.formdata textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, #ffffff, #f9fbff);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+/* Textarea */
+.formdata textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Focus effect */
+.formdata input:focus,
+.formdata textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px rgba(255, 159, 28, 0.12);
+}
+
+/* Submit button */
+.formdata button {
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: none;
+  background: #800000; 
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease-in-out;
+}
+
+.formdata button:hover {
+  transform: translateY(-2px);
+}
+
+.formdata button:active {
+  transform: scale(0.97);
+}
+
+/* Result message */
+span {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  font-weight: 500;
+  color: #0f1724;
+}

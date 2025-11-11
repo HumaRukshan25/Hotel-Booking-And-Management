@@ -1,0 +1,227 @@
+/* :root {
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --accent: #ff9f1c;
+  --muted: #6b7280;
+  --border: #e6e9ef;
+  --radius: 12px;
+  --shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+  --max-width: 720px;
+}
+
+
+.form-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 100%);
+  padding: 40px 16px;
+  box-sizing: border-box;
+}
+
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-align: center;
+  color: #0f1724;
+
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+.hotel-form {
+  width: 100%;
+  max-width: var(--max-width);
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  box-sizing: border-box;
+}
+
+
+@media (max-width: 720px) {
+  .hotel-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.hotel-form input,
+.hotel-form textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, #ffffff, #f9fbff);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.hotel-form textarea {
+  grid-column: 1 / -1;
+  min-height: 110px;
+  resize: vertical;
+}
+
+
+.hotel-form input:focus,
+.hotel-form textarea:focus {
+  border-color: rgba(255, 159, 28, 0.9);
+  box-shadow: 0 6px 18px rgba(255, 159, 28, 0.12);
+}
+
+
+.hotel-form button {
+  cursor: pointer;
+  border: none;
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  background: var(--accent);
+  color: white;
+  transition: transform 0.15s ease-in-out;
+  grid-column: 1 / -1;
+}
+
+.hotel-form button:hover {
+  transform: translateY(-2px);
+}
+
+.hotel-form button:active {
+  transform: scale(0.97);
+}
+
+.hotel-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+} */
+
+:root {
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --accent: #ff9f1c;
+  --muted: #6b7280;
+  --border: #e6e9ef;
+  --radius: 12px;
+  --shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+  --max-width: 720px;
+}
+
+/* Full page center layout */
+.form-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 16px;
+  background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 100%);
+}
+
+/* Form card styling */
+.card {
+  width: 100%;
+  max-width: var(--max-width);
+  background: var(--card);
+  padding: 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+/* Form title */
+.card h2 {
+  text-align: center;
+  margin-bottom: 18px;
+  font-size: 1.8rem;
+  color: #0f1724;
+  font-weight: 700;
+}
+
+/* Form grid layout */
+.hotel-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* Single column on small screens */
+@media (max-width: 720px) {
+  .hotel-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Input and textarea styling */
+.hotel-form input,
+.hotel-form textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #ffffff, #f9fbff);
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Textarea spans full width */
+.hotel-form textarea {
+  grid-column: 1 / -1;
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* Focus effect */
+.hotel-form input:focus,
+.hotel-form textarea:focus {
+  border-color: rgba(255, 159, 28, 0.9);
+  box-shadow: 0 6px 18px rgba(255, 159, 28, 0.12);
+}
+
+/* Submit button */
+.hotel-form button {
+  grid-column: 1 / -1;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease-in-out;
+}
+
+.hotel-form button:hover {
+  transform: translateY(-2px);
+}
+
+.hotel-form button:active {
+  transform: scale(0.97);
+}
+
+.hotel-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

@@ -1,0 +1,148 @@
+/* FULL SCREEN BACKGROUND */
+.landingpage {
+  height: 100vh;
+  width: 100%;
+  background: url("../images/im2.jfif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* PAGE TITLE */
+.landingpage h1 {
+  margin-top: 3vh;
+  font-size: 32px;
+  color: rgb(143, 40, 54);
+  text-shadow: 3px 3px 10px black;
+  letter-spacing: 1px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* LOGIN BOX */
+.landingpage .login-container {
+  width: 35%;
+  height: auto;
+  padding-bottom: 2vh;
+  margin-top: 3vh;
+
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
+
+  animation: fade-in 0.7s ease-in-out;
+}
+
+/* Button switch container */
+.landingpage .btn-container {
+  width: 80%;
+  height: 7vh;
+  margin: 4vh auto;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
+/* Sliding button */
+.landingpage .btn-container button {
+  width: 50%;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+
+  background: linear-gradient(90deg, #7f1b19, #d46961);
+  color: rgb(248, 238, 238);
+  transition: transform 0.5s ease-in-out;
+
+  border-radius: 50px;
+}
+
+/* Admin: Slide Left */
+.admin-btn {
+  transform: translateX(0%);
+}
+
+/* User: Slide Right */
+.user-btn {
+  transform: translateX(100%);
+}
+
+/* Heading Text */
+.landingpage .heading {
+  text-align: center;
+  font-size: 25px;
+  color: #07294d;
+  font-weight: bold;
+  margin-bottom: 2vh;
+  text-shadow: 1px 1px 2px rgb(226, 122, 109);
+}
+
+/* Form Slide Container */
+.login-slider {
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Sliding Wrapper */
+.form-wrapper {
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Inputs and Buttons from forms */
+.landingpage input {
+  width: 80%;
+  display: block;
+  margin: 12px auto;
+  padding: 12px;
+
+  border-radius: 8px;
+  border: none;
+  outline: none;
+
+  background: rgba(219, 210, 210, 0.7);
+  backdrop-filter: blur(10px);
+  font-size: 15px;
+}
+
+.landingpage input:focus {
+  border: 2px solid #ac4c4c;
+}
+
+/* Signup link */
+.links-container {
+  text-align: center;
+  margin-top: 1vh;
+}
+
+.signup-link {
+  font-size: 16px;
+  color: #011627;
+  font-weight: bold;
+}
+
+.signup-link:hover {
+  color: #c13d3d;
+  text-decoration: underline;
+}
+
+/* smooth fade animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
