@@ -1,6 +1,8 @@
 # Hotel-Booking-And-Management
-Backend:  FastAPI (Python)  SQLAlchemy (ORM)  MySQL / SQLite (Database)  Pydantic (Data validation)  CORS Middleware  Frontend:  React (Vite)  Axios (API calls)  React Router (Navigation)  CSS (Styling)
-
+Backend:  FastAPI (Python),  SQLAlchemy (ORM),  MySQL / SQLite (Database),  Pydantic (Data validation),  CORS Middleware  Frontend:  React (Vite),  Axios (API calls),  React Router (Navigation),  CSS (Styling)
+Admin login is    
+email: "admin@gmail.com",
+password: "admin123"
 ------------------------------------------------------------------------------------------------------------------------------------------------------->
  **Windows setup for FastAPI backend**
 1. Install Python
