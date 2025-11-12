@@ -8,7 +8,11 @@ password: "admin123"
  **Windows setup for FastAPI backend**
  
 1. Install Python
+<<<<<<< HEAD
  Download & install Python 3.x /3.14
+=======
+Download & install Python 3.x /3.14
+>>>>>>> 47f9fce (my 2nd commit)
   ✅ Check Add Python to PATH  environment variable
 
 3. Verify installation

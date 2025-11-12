@@ -21,7 +21,7 @@
 .hero-content {
   position: relative;
   text-align: center;
-  color: white;
+  color: rgb(255, 255, 255);
   z-index: 2;
 }
 
@@ -47,7 +47,7 @@
   font-weight: 700;
   margin-bottom: 15px;
   letter-spacing: 2px;
-  color: #fff;               /* bright white for contrast */
+  color: #ffffff;               /* bright white for contrast */
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* subtle shadow for readability */
 }
 
@@ -55,7 +55,7 @@
 .subtitle {
   font-size: 1.5rem;
   margin-bottom: 25px;
-  color: #f0f0f0;            /* soft white for contrast */
+  color: #fff9f9;            /* soft white for contrast */
   opacity: 0.85;
   text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
   line-height: 1.4;
