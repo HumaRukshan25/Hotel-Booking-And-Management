@@ -1,30 +1,39 @@
 # Hotel-Booking-And-Management
 Backend:  FastAPI (Python),  SQLAlchemy (ORM),  MySQL / SQLite (Database),  Pydantic (Data validation),  CORS Middleware  Frontend:  React (Vite),  Axios (API calls),  React Router (Navigation),  CSS (Styling)
+
 Admin login is    
 email: "admin@gmail.com",
 password: "admin123"
 ------------------------------------------------------------------------------------------------------------------------------------------------------->
  **Windows setup for FastAPI backend**
+ 
 1. Install Python
  Download & install Python 3.x /3.14
   ✅ Check Add Python to PATH  environment variable
-2. Verify installation
+
+3. Verify installation
 python --version
-3. Create project folder
+
+4. Create project folder
 mkdir pythonfastapi
-cd pythonfastapi
-4. Create & activate virtual environment
+
+5. cd pythonfastapi
+
+6. Create & activate virtual environment
 python -m venv venv
+
 venv\Scripts\activate
-5. Install dependencies
+
+7. Install dependencies
 pip install fastapi uvicorn pydantic sqlalchemy python-multipart requests
-6. Run FastAPI server
+
+8. Run FastAPI server
 uvicorn main:app --reload
 * `main` = your Python file (`main.py`)
 * `app` = FastAPI instance inside `main.py`
 * `--reload` = auto-reload on changes
 
-7. Access API in browser 
+9. Access API in browser 
 http://127.0.0.1:8000/users/
 http://127.0.0.1:8000/hotels/
 http://127.0.0.1:8000/bookings/
@@ -51,25 +60,32 @@ PUT /bookings/{id} → Update a booking
 DELETE /bookings/{id} → Cancel a booking
 
 
-8. test api using Postman or Swagger
+10. test api using Postman or Swagger
    * postman app
    * Access Swagger UI Open a browser and go to:
+     
 http://127.0.0.1:8000/docs
 ------------------------------------------------------------------------------------------------------------------------------------------------------->
+
  **Windows setup for ReactJS and Vite frontend**
 
  1. Create a React Vite project
   npm create vite@latest ReactjsAts
 Choose React
 Choose JavaScript
- 2. Navigate to the project folder
+
+ 3. Navigate to the project folder
    cd learningreact
- 3. Install dependencies
+
+ 5. Install dependencies
       npm install
- 4. Install dependencies
+    
+ 7. Install dependencies
     npm install react-router-dom axios
- 5. Run development server
+    
+ 9. Run development server
     npm run dev
+    
 Browser: http://localhost:5173/
 
    
