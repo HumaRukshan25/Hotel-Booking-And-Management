@@ -36,7 +36,9 @@ uvicorn main:app --reload
 * `main` = your Python file (`main.py`)
 * `app` = FastAPI instance inside `main.py`
 * `--reload` = auto-reload on changes
-   do this to populate the json data  hotels.json  python populate_hotels.py
+  -------------------------------------------------------------------------------------->
+              do this to populate the json data
+    hotels.json ----> python populate_hotels.py
 
 9. Access API in browser 
 http://127.0.0.1:8000/users/
