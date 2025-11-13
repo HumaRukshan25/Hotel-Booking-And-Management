@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 import "../assets/styles/readhotel.css";
 
@@ -10,16 +10,14 @@ const ReadHotels = () => {
   const [hotel, setHotel] = useState(null);
   const [showDesc, setShowDesc] = useState(false);
   const [loadingBooking, setLoadingBooking] = useState(false);
-
-  // ✅ Added: store check-in & check-out date from input
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
 
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const user_id = localStorage.getItem("userId");
-  const role = (localStorage.getItem("role") || "").toLowerCase();
-  const isAdmin = role === "admin";
+  // ✅ Detect role based on route path
+  const isAdmin = location.pathname.startsWith("/adminportal");
 
   useEffect(() => {
     const fetchHotel = async () => {
@@ -27,7 +25,7 @@ const ReadHotels = () => {
         const resp = await axios.get(`${API_BASE}/hotels/${id}`);
         setHotel(resp.data);
       } catch (error) {
-        console.error(error);
+        console.error("Error fetching hotel:", error);
         navigate(isAdmin ? "/adminportal/hotels" : "/usersportal/hotels");
       }
     };
@@ -36,22 +34,19 @@ const ReadHotels = () => {
 
   if (!hotel) return <div>Loading hotel...</div>;
 
-
-  // ✅ Add description here
-  const { name, location, price, rating, imageUrl, description } = hotel;
-
+  const { name, location: hotelLocation, price, rating, imageUrl, description } = hotel;
 
   const backBtn = () => {
     navigate(isAdmin ? "/adminportal/hotels" : "/usersportal/hotels");
   };
 
   const bookHotel = async () => {
+    const user_id = localStorage.getItem("userId");
     if (!user_id) {
       alert("User not logged in — userId not found.");
       return;
     }
 
-    // ✅ Validate check-in & check-out
     if (!checkIn || !checkOut) {
       alert("Please select both check-in and check-out dates.");
       return;
@@ -64,18 +59,16 @@ const ReadHotels = () => {
 
     try {
       setLoadingBooking(true);
-
       const bookingData = {
-        user_id: user_id,
+        user_id,
         hotel_id: id,
         check_in: checkIn,
         check_out: checkOut,
       };
-
       const resp = await axios.post(`${API_BASE}/bookings/`, bookingData);
       alert(`Hotel booked successfully! Booking ID: ${resp.data.id}`);
     } catch (error) {
-      console.error(error);
+      console.error("Booking failed:", error);
       alert("Failed to book hotel.");
     } finally {
       setLoadingBooking(false);
@@ -90,10 +83,9 @@ const ReadHotels = () => {
       </div>
 
       <div className="right">
-        <div className="title">Location: {location}</div>
+        <div className="title">Location: {hotelLocation}</div>
         <div className="title">Price: ₹{price}</div>
         <div className="title">Rating: ⭐ {rating}</div>
-
 
         <button className="clr" onClick={() => setShowDesc(!showDesc)}>
           {showDesc ? "Hide Description" : "Show Description"}
@@ -101,38 +93,40 @@ const ReadHotels = () => {
 
         {showDesc && (
           <p style={{ marginTop: "10px", lineHeight: "1.5", color: "#444" }}>
-            <strong>Description:</strong> {description ? description : "No description available"}
+            <strong>Description:</strong>{" "}
+            {description ? description : "No description available"}
           </p>
         )}
 
-
-        {/* ✅ USER Selects Dates Here */}
+        {/* ✅ Date inputs only for users */}
         {!isAdmin && (
           <div style={{ marginTop: "15px" }}>
-            <label><strong>Select Check-in:</strong></label>
+            <label>
+              <strong>Select Check-in:</strong>
+            </label>
             <input
               type="date"
               value={checkIn}
-              min={new Date().toISOString().split("T")[0]}   // ✅ Restrict past dates
+              min={new Date().toISOString().split("T")[0]}
               onChange={(e) => {
                 setCheckIn(e.target.value);
-                setCheckOut(""); // reset checkout when check-in changes
+                setCheckOut("");
               }}
               required
             />
 
-            <label><strong>Select Check-out:</strong></label>
+            <label>
+              <strong>Select Check-out:</strong>
+            </label>
             <input
               type="date"
               value={checkOut}
-              min={checkIn || new Date().toISOString().split("T")[0]} // ✅ min date = check-in
+              min={checkIn || new Date().toISOString().split("T")[0]}
               onChange={(e) => setCheckOut(e.target.value)}
               required
             />
           </div>
         )}
-
-
 
         <div style={{ marginTop: "12px", display: "flex", gap: "10px" }}>
           <button onClick={backBtn}>Back</button>
@@ -153,6 +147,4 @@ const ReadHotels = () => {
 };
 
 export default ReadHotels;
-
-
 
