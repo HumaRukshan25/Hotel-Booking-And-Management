@@ -1,0 +1,191 @@
+[
+  {
+    "name": "Taj Hotel",
+    "location": "Bengaluru",
+    "price": "2500",
+    "rating": "4.8",
+    "imageUrl": "https://media.istockphoto.com/id/539018604/photo/taj-mahal-palace-hotel.jpg?s=1024x1024&w=is&k=20&c=saGa_oia7adDStCyEW1KjHMl0_Q5CkQNhUL9td3Wcdg=",
+    "description": "this is taj hotel",
+    "id": 51
+  },
+  {
+    "name": "ITC Grand Chola",
+    "location": "Chennai, Tamil Nadu",
+    "price": "25000",
+    "rating": "4.6",
+    "imageUrl": "https://lifeandtrendz.com/wp-content/uploads/2022/06/ITC-GRAND-CHOLA1.jpg",
+    "description": "itc grand",
+    "id": 52
+  },
+  {
+    "name": "The Oberoi Resort",
+    "location": "Goa",
+    "price": "42000",
+    "rating": "4.9",
+    "imageUrl": "https://plus.unsplash.com/premium_photo-1685290652443-6786f4651ddc?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687",
+    "description": "oberoi resort",
+    "id": 53
+  },
+  {
+    "name": "The Leela Palace",
+    "location": "Udaipur, Rajasthan",
+    "price": "28000",
+    "rating": "4.7",
+    "imageUrl": "https://media.istockphoto.com/id/1296648578/photo/leela-palace-in-udaipur-india.jpg?s=1024x1024&w=is&k=20&c=fhwa2DK0BhhjK8_88352kUY4rfSh3EPepKw3_luqKFo=",
+    "description": "leela palace",
+    "id": 54
+  },
+  {
+    "name": "The Oberoi Resort",
+    "location": "Goa",
+    "price": "42000",
+    "rating": "4.9",
+    "imageUrl": "https://plus.unsplash.com/premium_photo-1685290652443-6786f4651ddc?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687",
+    "description": "oberoi resort",
+    "id": 55
+  },
+  {
+    "name": "Taj Lake Palace",
+    "location": "Udaipur, Rajasthan",
+    "price": "12000",
+    "rating": "4.8",
+    "imageUrl": "https://media.pangeatravel.nl/groot/groot/india_0643_IT.jpg",
+    "description": "taj lake",
+    "id": 56
+  },
+  {
+    "name": "JW Marriott",
+    "location": "Mumbai, Maharashtra",
+    "price": "22000",
+    "rating": "4.6",
+    "imageUrl": "https://www.flokq.com/blog/wp-content/uploads/2020/07/jw-marriot.jpg",
+    "description": "A beachside 5-star hotel overlooking the Arabian Sea with infinity pools and world-class spa.",
+    "id": 57
+  },
+  {
+    "name": "Novotel Goa Resort & Spa",
+    "location": "Goa",
+    "price": "9500",
+    "rating": "4.4",
+    "imageUrl": "https://r1imghtlak.ibcdn.com/cdbbecda8e1e11e7a979025f77df004f.jpg?downsize=634:357",
+    "description": "Perfect for vacation stays, featuring private beach access, spa facilities, and night events.",
+    "id": 58
+  },
+  {
+    "name": "The Fern Residency",
+    "location": "Jaipur, Rajasthan",
+    "price": "4500",
+    "rating": "4.2",
+    "imageUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/02/c6/34/1f/the-fern-residency.jpg?w=800&h=-1&s=1",
+    "description": "Eco-friendly premium hotel with modern amenities and royal Rajasthani hospitality.",
+    "id": 59
+  },
+  {
+    "name": "Taj Madikeri Resort & Spa",
+    "location": "Coorg, Karnataka",
+    "price": "18000",
+    "rating": "4.8",
+    "imageUrl": "https://currylines.com/wp-content/uploads/2019/07/IMG_20190715_190249-1.jpg",
+    "description": "A peaceful hilltop resort surrounded by lush forests, offering spa and nature trails.",
+    "id": 60
+  },
+  {
+    "name": "Oceanview Resort",
+    "location": "Goa, India",
+    "price": "45004",
+    "rating": "4.5",
+    "imageUrl": "https://www.oceanviewsantamonica.com/resourcefiles/home-hero-slider/view-of-ocean-view-hotel-santa-monica-california.jpg",
+    "description": "A beautiful beachfront resort with luxurious rooms, infinity pool, and spa facilities. Perfect for a relaxing vacation",
+    "id": 61
+  },
+  {
+    "name": "Radisson Blu Plaza",
+    "location": "Delhi, India",
+    "price": "16000",
+    "rating": "4.5",
+    "imageUrl": "https://media.radissonhotels.net/image/Radisson-Blu-Plaza-Hotel-Helsinki/Exteriorview/16256-113856-f63828702_3XL.jpg?impolicy=SecondGalleryImg",
+    "description": "Luxury business hotel near Delhi Airport with spa, pool, and fine dining.",
+    "id": 62
+  },
+  {
+    "name": "Marriott Kochi",
+    "location": "Kochi, Kerala",
+    "price": "14000",
+    "rating": "4.6",
+    "imageUrl": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/475834940.jpg?k=3a8775b8a8b98369819cdd9ad4b6efd370795c16c5c94de9493727ae8ae8c228&o=&hp=1",
+    "description": "5-star waterfront hotel with modern rooms, dining, and lagoon view pool.",
+    "id": 63
+  },
+  {
+    "name": "Hyatt Regency",
+    "location": "Pune, Maharashtra",
+    "price": "11000",
+    "rating": "4.4",
+    "imageUrl": "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202211170932302553-bbf43594656811edbcb50a58a9feac02.jpg",
+    "description": "Premium hotel with luxurious conference halls and rooftop dining.",
+    "id": 64
+  },
+  {
+    "name": "Four Seasons Hotel",
+    "location": "Bengaluru, Karnataka",
+    "price": "27000",
+    "rating": "4.7",
+    "imageUrl": "https://cimg0.ibsrv.net/cimg/www.fodors.com/2000x2000_60/696/FourSeasonsBH-hero-226696.jpg",
+    "description": "Luxury hotel with skyline rooftop, modern suites, and fine wine bar.",
+    "id": 65
+  },
+  {
+    "name": "Holiday Inn",
+    "location": "Ahmedabad, Gujarat",
+    "price": "6500",
+    "rating": "4.3",
+    "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.6ZXcvr7bfNDPOVTvX9VZAQHaE7?cb=ucfimg2ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "description": "Comfort hotel with rooftop cafe and metro access, suitable for business travel.",
+    "id": 66
+  },
+  {
+    "name": "The Lalit Grand Palace",
+    "location": "Srinagar, Jammu & Kashmir",
+    "price": "32000",
+    "rating": "4.8",
+    "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.oz2mZ10gF8f_8CWcjuS3xAHaEK?cb=ucfimg2ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "description": "Historic royal palace converted into a hotel with stunning mountain views.",
+    "id": 67
+  },
+  {
+    "name": "The Tamara Resort",
+    "location": "Kodaikanal, Tamil Nadu",
+    "price": "19000",
+    "rating": "4.7",
+    "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.B7wn_etpZwhYHgZUlcNzxgHaFP?cb=ucfimg2ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "description": "Luxury eco-resort surrounded by hills and forests, perfect for honeymoon stays.",
+    "id": 69
+  },
+  {
+    "name": "Royal Orchid Fort Resort",
+    "location": "Mussoorie, Uttarakhand",
+    "price": "15000",
+    "rating": "4.5",
+    "imageUrl": "https://www.chardhamhotel.in/include/img/royal-orchid-fort-resort-mussoorie1.webp",
+    "description": "Hilltop resort with panoramic view of the Himalayas, spa, and open terrace.",
+    "id": 70
+  },
+  {
+    "name": "Vivanta Dal View",
+    "location": "Srinagar, Jammu & Kashmir",
+    "price": "28000",
+    "rating": "4.6",
+    "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.WzWUryiDli6XFCW_Jb6_eQHaDz?cb=ucfimg2ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "description": "Lakeview hotel with rooftop restaurant and heated rooms.",
+    "id": 71
+  },
+  {
+    "name": "Fairfield by Marriott",
+    "location": "Amritsar, Punjab",
+    "price": "8000",
+    "rating": "4.3",
+    "imageUrl": "https://discover.symmons.com/wp-content/uploads/2020/04/fairfield-resource-640x512.jpg",
+    "description": "Best stay for Golden Temple visitors with clean rooms and great service.",
+    "id": 72
+  }
+]
