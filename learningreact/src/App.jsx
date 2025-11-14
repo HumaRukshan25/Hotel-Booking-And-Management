@@ -5,6 +5,7 @@ import AdminPortal from './components/Admin/AdminPortal'
 import UsersPortal from './components/Users/UsersPortal'
 import UserSignup from './components/Users/UserSignup'
 import ForgotPassword from './components/Users/forgotpassword'
+import ResetPassword from './components/Users/ResetPassword'
 
 const App = () => {
   return (
@@ -18,7 +19,8 @@ const App = () => {
   
       <Route path="/usersignup" element={<UserSignup />} />
 
-      {/* <Route path="/forgotpassword" element={<ForgotPassword />} /> */}
+      <Route path="/forgotpassword" element={<ForgotPassword />} />
+      <Route path="/reset-password/:token" element={<ResetPassword />} />
 
     </Routes>
     </BrowserRouter> 

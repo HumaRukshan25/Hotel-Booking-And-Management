@@ -92,6 +92,8 @@ const LandingPage = () => {
               <NavLink to="/forgotpassword" className="forgot-link" style={{ marginLeft: "15px" }}>
               Forgot Password?
             </NavLink>
+            <br />
+             
           </div>
         )}
       </div>

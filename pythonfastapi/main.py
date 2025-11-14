@@ -284,26 +284,32 @@ class ResetPasswordRequest(BaseModel):
     password: str
 
 # Endpoint to send reset link
+# In main.py - update the forgot_password endpoint
 @app.post("/users/forgot-password")
 def forgot_password(
     request: ForgotPasswordRequest,
     background_tasks: BackgroundTasks,
     db: Session = Depends(get_db)
 ):
+    print(f"🔍 Forgot password request for email: {request.email}")
+    
     user = get_user_by_email(db, request.email)
     
-    # Always respond success for security
-    if not user:
+    if user:
+        print(f"✅ User found: {user.email}")
+        token = generate_reset_token(user.id)
+        save_reset_token(db, user, token)
+        reset_link = f"http://localhost:5173/reset-password/{token}"
+        print(f"🔗 Generated reset link for user {user.id}")
+
+        # Add email sending to background tasks
+        background_tasks.add_task(send_reset_email, user.email, reset_link)
+        print("📨 Email task added to background tasks")
+        
         return {"success": True, "message": "If this email exists, a reset link has been sent."}
-
-    token = generate_reset_token(user.id)
-    save_reset_token(db, user, token)
-    reset_link = f"http://localhost:5173/reset-password/{token}"
-
-    background_tasks.add_task(send_reset_email, user.email, reset_link)
-
-    return {"success": True, "message": "If this email exists, a reset link has been sent."}
-
+    else:
+        print(f"❌ No user found with email: {request.email}")
+        return {"success": True, "message": "If this email exists, a reset link has been sent."}
 # Endpoint to reset password
 @app.post("/users/reset-password")
 def reset_password(
@@ -318,5 +324,7 @@ def reset_password(
     if not user:
         return {"success": False, "message": "User not found"}
 
+    # Pass plain text password - it gets hashed in update_password
     update_password(db, user, request.password)
     return {"success": True, "message": "Password updated successfully"}
+
