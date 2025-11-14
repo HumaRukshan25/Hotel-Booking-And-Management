@@ -2,7 +2,8 @@
 .landingpage {
   height: 100vh;
   width: 100%;
-  background: url("../images/im2.jfif");
+  /* background: linear-gradient(135deg, #800000, #4b0000); */
+  background: url("https://rclite.com/wp-content/uploads/2023/07/image-9.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -16,11 +17,27 @@
 .landingpage h1 {
   margin-top: 3vh;
   font-size: 32px;
-  color: rgb(143, 40, 54);
+  color: #f8e8e8;
   text-shadow: 3px 3px 10px black;
   letter-spacing: 1px;
   font-family: "Segoe UI", sans-serif;
 }
+
+/* LOGIN BOX */
+/* .landingpage .login-container {
+  width: 35%;
+  height: auto;
+  padding-bottom: 2vh;
+  margin-top: 3vh;
+
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  /* background: rgb(235, 233, 233); */
+   /* background: rgba(198, 198, 198, 0.35); /* semi-transparent layer */
+  /*box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
+
+  animation: fade-in 0.7s ease-in-out;
+} */
 
 /* LOGIN BOX */
 .landingpage .login-container {
@@ -30,12 +47,17 @@
   margin-top: 3vh;
 
   border-radius: 20px;
-  backdrop-filter: blur(20px);
-  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px); /* gives frosted-glass look */
+  background: rgba(184, 183, 183, 0.009); /* soft transparent background */
   box-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
 
   animation: fade-in 0.7s ease-in-out;
 }
+
+
+
+
+
 
 /* Button switch container */
 .landingpage .btn-container {
@@ -58,7 +80,7 @@
   cursor: pointer;
 
   background: linear-gradient(90deg, #7f1b19, #d46961);
-  color: rgb(248, 238, 238);
+  color: rgb(251, 248, 248);
   transition: transform 0.5s ease-in-out;
 
   border-radius: 50px;
@@ -78,10 +100,10 @@
 .landingpage .heading {
   text-align: center;
   font-size: 25px;
-  color: #07294d;
+  color: #6d1e1e;
   font-weight: bold;
   margin-bottom: 2vh;
-  text-shadow: 1px 1px 2px rgb(226, 122, 109);
+  text-shadow: 1px 1px 2px #300000;
 }
 
 /* Form Slide Container */
@@ -109,7 +131,7 @@
   border: none;
   outline: none;
 
-  background: rgba(219, 210, 210, 0.7);
+  background: rgba(255, 245, 245, 0.8);
   backdrop-filter: blur(10px);
   font-size: 15px;
 }
@@ -126,12 +148,12 @@
 
 .signup-link {
   font-size: 16px;
-  color: #011627;
+  color: #c29626;
   font-weight: bold;
 }
 
 .signup-link:hover {
-  color: #c13d3d;
+  color: #c96464;
   text-decoration: underline;
 }
 

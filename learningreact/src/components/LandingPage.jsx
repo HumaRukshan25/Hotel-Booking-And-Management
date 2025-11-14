@@ -62,7 +62,7 @@ const LandingPage = () => {
 
   return (
     <div className="landingpage">
-      <h1>Welcome To Hotel Booking And Management</h1>
+      <h1><b>Welcome To Hotel Booking And Management</b></h1>
 
       <div className="login-container">
         <div className="btn-container">
@@ -87,6 +87,10 @@ const LandingPage = () => {
           <div className="links-container">
             <NavLink to="/usersignup" className="signup-link">
               Signup / Register
+            </NavLink>
+            <br />
+              <NavLink to="/forgotpassword" className="forgot-link" style={{ marginLeft: "15px" }}>
+              Forgot Password?
             </NavLink>
           </div>
         )}

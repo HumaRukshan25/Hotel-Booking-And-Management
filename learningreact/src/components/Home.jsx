@@ -22,13 +22,14 @@ const Home = () => {
       <div className="overlay"></div>
 
       <div className="hero-content">
-        <h1 className="title">Welcome to LuxuryStay</h1>
+        <h1 className="title"><b>Welcome to LuxuryStay</b></h1>
         <p className="subtitle">
-          Book premium hotels with comfort and convenience ✨
+          <b>
+          Book premium hotels with comfort and convenience✨</b>
         </p>
 
         <button className="explore-btn" onClick={handleExplore}>
-          Explore Hotels ➜
+         <b> Explore Hotels ➜</b>
         </button>
       </div>
     </div>

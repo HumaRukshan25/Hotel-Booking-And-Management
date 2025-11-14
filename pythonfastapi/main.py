@@ -1,9 +1,22 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, Body
 
 from sqlalchemy.orm import Session
 import models, schemas
 from database import Base, engine, SessionLocal
 from fastapi.middleware.cors import CORSMiddleware
+
+# 
+from fastapi import BackgroundTasks
+from pydantic import BaseModel
+from models import User, Admin
+from utils import generate_reset_token, send_reset_email, verify_reset_token
+from crud import get_user_by_email, save_reset_token, update_password
+
+from utils import verify_password
+from utils import hash_password
+from schemas import UserCreate, UserResponse, UserUpdate, UserLogin
+from schemas import AdminLogin
+
 
 
 Base.metadata.create_all(bind=engine)
@@ -34,17 +47,35 @@ def get_db():
 # ======================================================
 
 
-@app.post("/users/", response_model=schemas.UserResponse)
-def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
-    new_user = models.User(
+# @app.post("/users/", response_model=schemas.UserResponse)
+# def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
+#     new_user = models.User(
+#         username=user.username,
+#         email=user.email,
+#         password=user.password  # store plain text password
+#     )
+#     db.add(new_user)
+#     db.commit()
+#     db.refresh(new_user)
+#     return new_user
+
+@app.post("/users/", response_model=UserResponse)
+def create_user(user: UserCreate, db: Session = Depends(get_db)):
+    # Check if email already exists
+    existing_user = db.query(User).filter(User.email == user.email).first()
+    if existing_user:
+        raise HTTPException(status_code=400, detail="Email already registered")
+
+    db_user = User(
         username=user.username,
         email=user.email,
-        password=user.password  # store plain text password
+        password=hash_password(user.password)
     )
-    db.add(new_user)
+    db.add(db_user)
     db.commit()
-    db.refresh(new_user)
-    return new_user
+    db.refresh(db_user)
+    return db_user
+
 
 
 
@@ -61,19 +92,6 @@ def get_user_by_id(user_id: int, db: Session = Depends(get_db)):
     return user
 
 
-# @app.put("/users/{user_id}", response_model=schemas.UserResponse)
-# def update_user(user_id: int, data: schemas.UserCreate, db: Session = Depends(get_db)):
-#     user = db.query(models.User).filter(models.User.id == user_id).first()
-#     if not user:
-#         raise HTTPException(status_code=404, detail="User not found")
-
-#     user.username = data.username
-#     user.email = data.email
-#     user.password = data.password  # update plain text password
-#     db.commit()
-#     db.refresh(user)
-#     return user
-
 @app.put("/users/{user_id}", response_model=schemas.UserResponse)
 def update_user(user_id: int, data: schemas.UserUpdate, db: Session = Depends(get_db)):
     user = db.query(models.User).filter(models.User.id == user_id).first()
@@ -85,8 +103,11 @@ def update_user(user_id: int, data: schemas.UserUpdate, db: Session = Depends(ge
         user.username = data.username
     if data.email:
         user.email = data.email
+    # if data.password:
+    #     user.password = data.password  # if hashing required, apply hash function here
     if data.password:
-        user.password = data.password  # if hashing required, apply hash function here
+        user.password = hash_password(data.password)  # HASH HERE
+
 
     db.commit()
     db.refresh(user)
@@ -225,3 +246,77 @@ def delete_booking(booking_id: int, db: Session = Depends(get_db)):
 
 
 
+@app.post("/users/login")
+def login(user: UserLogin, db: Session = Depends(get_db)):
+    db_user = db.query(User).filter(User.email == user.email).first()
+    if not db_user or not verify_password(user.password, db_user.password):
+        raise HTTPException(status_code=400, detail="Invalid email or password")
+    
+    return {"message": "Login successful", "user": {"id": db_user.id, "username": db_user.username}}
+
+@app.post("/admin/login")
+def admin_login(data: AdminLogin, db: Session = Depends(get_db)):
+    admin = db.query(Admin).filter(Admin.email == data.email).first()
+
+    if not admin:
+        raise HTTPException(status_code=400, detail="Invalid credentials")
+
+    if not verify_password(data.password, admin.password):
+        raise HTTPException(status_code=400, detail="Invalid credentials")
+
+    return {"message": "Login successful"}
+
+
+
+
+
+
+
+
+
+
+# Pydantic request models
+class ForgotPasswordRequest(BaseModel):
+    email: str
+
+class ResetPasswordRequest(BaseModel):
+    token: str
+    password: str
+
+# Endpoint to send reset link
+@app.post("/users/forgot-password")
+def forgot_password(
+    request: ForgotPasswordRequest,
+    background_tasks: BackgroundTasks,
+    db: Session = Depends(get_db)
+):
+    user = get_user_by_email(db, request.email)
+    
+    # Always respond success for security
+    if not user:
+        return {"success": True, "message": "If this email exists, a reset link has been sent."}
+
+    token = generate_reset_token(user.id)
+    save_reset_token(db, user, token)
+    reset_link = f"http://localhost:5173/reset-password/{token}"
+
+    background_tasks.add_task(send_reset_email, user.email, reset_link)
+
+    return {"success": True, "message": "If this email exists, a reset link has been sent."}
+
+# Endpoint to reset password
+@app.post("/users/reset-password")
+def reset_password(
+    request: ResetPasswordRequest,
+    db: Session = Depends(get_db)
+):
+    user_id = verify_reset_token(request.token)
+    if not user_id:
+        return {"success": False, "message": "Invalid or expired token"}
+
+    user = db.query(User).filter(User.id == user_id).first()
+    if not user:
+        return {"success": False, "message": "User not found"}
+
+    update_password(db, user, request.password)
+    return {"success": True, "message": "Password updated successfully"}

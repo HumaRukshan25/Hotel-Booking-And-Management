@@ -1,8 +1,9 @@
-from pydantic import BaseModel
+from pydantic import BaseModel,EmailStr
 from datetime import datetime
 from typing import Optional
 
-# ============== USER =================
+
+# ============== UER =================
 
 class UserCreate(BaseModel):
     username: str
@@ -40,7 +41,6 @@ class HotelResponse(HotelCreate):
     class Config:
         from_attributes = True
 
-
 class BookingCreate(BaseModel):
     user_id: int
     hotel_id: int
@@ -52,3 +52,20 @@ class BookingResponse(BookingCreate):
     id: int
     class Config:
         from_attributes = True
+
+# schemas.py
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
+
+class AdminLogin(BaseModel):
+    email: EmailStr
+    password: str
+
+
+
+
+
+
+
+

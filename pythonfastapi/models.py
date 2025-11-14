@@ -3,14 +3,23 @@ from sqlalchemy.orm import relationship
 from database import Base
 from datetime import datetime
 
+# class User(Base):
+#     __tablename__ = "users"
+
+#     id = Column(Integer, primary_key=True, index=True)
+#     username = Column(String(255))
+#     email = Column(String(255))
+#     bookings = relationship("Booking", back_populates="user")
+#     password = Column(String, nullable=False)  # <- Add password field
+
 class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
-    username = Column(String(255))
-    email = Column(String(255))
+    username = Column(String(255), nullable=False)
+    email = Column(String(255), unique=True, index=True, nullable=False)
+    password = Column(String(128), nullable=False)  # store bcrypt hash
     bookings = relationship("Booking", back_populates="user")
-    password = Column(String, nullable=False)  # <- Add password field
 
 class Hotel(Base):
     __tablename__ = "hotels"
@@ -24,9 +33,6 @@ class Hotel(Base):
     description = Column(String(1000))   # ✅ NEW FIELD
     bookings = relationship("Booking", back_populates="hotel")
 
-
-
-
 class Booking(Base):
     __tablename__ = "bookings"
 
@@ -39,3 +45,12 @@ class Booking(Base):
 
     user = relationship("User", back_populates="bookings")
     hotel = relationship("Hotel", back_populates="bookings")
+
+
+class Admin(Base):
+    __tablename__ = "admin"
+
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String(200), unique=True, index=True, nullable=False)
+    password = Column(String(300), nullable=False)  # hashed password
+    username = Column(String(150), nullable=True)

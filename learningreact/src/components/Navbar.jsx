@@ -27,7 +27,7 @@ const Navbar = () => {
               <li><NavLink to="/usersportal" >HOME</NavLink></li>
               <li><NavLink to="/usersportal/hotels">Hotels</NavLink></li>
               <li><a href="/usersportal/booked-hotels">My Bookings</a></li>
-              <li><NavLink to="/usersportal/contacts">Contacts</NavLink></li>
+              <li><NavLink to="/usersportal/contacts">Contact Us</NavLink></li>
               <li><NavLink to="/">Logout</NavLink></li>
             </ul>
           }
