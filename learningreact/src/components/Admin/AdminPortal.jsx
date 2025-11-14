@@ -10,6 +10,7 @@ import UpdateHotel from '../UpdateHotel';   // ✅ Correct import
 import AddHotel from '../AddHotel'
 import Users from '../Users'
 import UpdateUser from './UpdateUser'
+import Footer from '../Footer'
 
 const AdminPortal = () => {
   return (
@@ -27,6 +28,7 @@ const AdminPortal = () => {
         <Route path="/updateuser/:id" element={<UpdateUser />} />
 
       </Routes>
+      <Footer/>
     </>
   )
 }

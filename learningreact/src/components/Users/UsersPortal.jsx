@@ -6,6 +6,7 @@ import Hotels from '../Hotels';
 import Contact from '../Contact';
 import ReadHotels from '../ReadHotels';
 import BookedHotels from '../BookedHotels';
+import Footer from '../Footer';
 
 const UsersPortal = () => {
   return (
@@ -21,6 +22,7 @@ const UsersPortal = () => {
 
 
       </Routes>
+        <Footer/>
     </>
   );
 }
