@@ -6,11 +6,11 @@ import '../assets/styles/footer.css';
 const Footer = () => {
   const location = useLocation();
   const currentYear = new Date().getFullYear();
-  
+
   // Check if we're in admin portal or user portal
   const isAdminPortal = location.pathname.startsWith('/adminportal');
   const isUserPortal = location.pathname.startsWith('/usersportal');
-  const isAuthPage = ['/forgotpassword', '/reset-password', '/login', '/signup'].some(path => 
+  const isAuthPage = ['/forgotpassword', '/reset-password', '/login', '/signup'].some(path =>
     location.pathname.includes(path)
   );
 
@@ -55,11 +55,12 @@ const Footer = () => {
         {/* Support Section - Shows for all pages */}
         <div className="footer-section">
           <h4>Support</h4>
+          {/* for SPA and no reload whole page use navlink */}
           <ul>
-            <li><a href="/help">Help Center</a></li>
-            <li><a href="/faq">FAQ</a></li>
-            <li><a href="/privacy">Privacy Policy</a></li>
-            <li><a href="/terms">Terms of Service</a></li>
+            <li><NavLink to="/help">Help Center</NavLink></li>
+            <li><NavLink to="/faq">FAQ</NavLink></li>
+            <li><NavLink to="/privacy">Privacy Policy</NavLink></li>
+            <li><NavLink to="/terms">Terms of Service</NavLink></li>
           </ul>
         </div>
 
@@ -73,7 +74,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      
+
       <div className="footer-bottom">
         <p>&copy; {currentYear} Hotel Booking System. All rights reserved.</p>
         {isAdminPortal && <span className="admin-badge">Admin Portal</span>}
