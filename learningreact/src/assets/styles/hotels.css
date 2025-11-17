@@ -1,4 +1,3 @@
-
 .hotels-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -86,4 +85,35 @@ button:nth-child(3) {
   font-size: 15px;
 }
 
+/* filter/search  by hotel name ,location and sort  by price ,rating  */
 
+
+.filter-sort-container {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  background: #ffffff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.filter-sort-container input,
+.filter-sort-container select {
+  flex: 1 1 200px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  background: #f9f9f9;
+}
+
+.filter-sort-container select {
+  cursor: pointer;
+}
+
+.hotels-page {
+  padding: 20px;
+}

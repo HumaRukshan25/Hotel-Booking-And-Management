@@ -9,23 +9,29 @@ const Users = () => {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
 
-  // Fetch users
   const fetchUsers = async () => {
-    const res = await axios.get(API_BASE);
-    setUsers(res.data);
+    try {
+      const res = await axios.get(API_BASE);
+      setUsers(res.data);
+    } catch (error) {
+      console.error("Failed to fetch users", error);
+    }
   };
 
   useEffect(() => {
     fetchUsers();
   }, []);
 
-  // Delete User
   const deleteUser = async (id, username) => {
     if (window.confirm(`Delete user ${username}?`)) {
       await axios.delete(API_BASE + id);
       fetchUsers();
     }
   };
+
+  // Default profile icon
+  const defaultProfile =
+    "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
 
   return (
     <div className="users">
@@ -44,20 +50,31 @@ const Users = () => {
             <thead>
               <tr>
                 <th>Sl. No</th>
+                <th>Profile</th>
                 <th>Username</th>
                 <th>Email</th>
                 <th>Delete</th>
                 <th>Update</th>
               </tr>
             </thead>
-
             <tbody>
               {users.map((u, i) => (
                 <tr key={u.id}>
                   <td>{i + 1}</td>
+                  <td>
+                    <img
+                      src={u.profileUrl || defaultProfile}
+                      alt={u.username}
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </td>
                   <td>{u.username}</td>
                   <td>{u.email}</td>
-
                   <td>
                     <button
                       className="btn-danger"
@@ -66,7 +83,6 @@ const Users = () => {
                       Delete
                     </button>
                   </td>
-
                   <td>
                     <button
                       className="btn-update"
