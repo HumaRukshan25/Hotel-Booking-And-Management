@@ -2,6 +2,7 @@
 import React from 'react';
 import { useLocation, NavLink } from 'react-router-dom';
 import '../assets/styles/footer.css';
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const Footer = () => {
   const location = useLocation();
@@ -21,11 +22,24 @@ const Footer = () => {
         <div className="footer-section">
           <h3>Hotel Booking</h3>
           <p>Your trusted partner for comfortable and affordable hotel bookings worldwide.</p>
+
+
           <div className="social-links">
-            <a href="#" aria-label="Facebook">📘</a>
-            <a href="#" aria-label="Twitter">🐦</a>
-            <a href="#" aria-label="Instagram">📷</a>
-            <a href="#" aria-label="LinkedIn">💼</a>
+            <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook" rel="noopener noreferrer">
+              <FaFacebookF />
+            </a>
+
+            <a href="https://twitter.com/" target="_blank" aria-label="Twitter" rel="noopener noreferrer">
+              <FaTwitter />
+            </a>
+
+            <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram" rel="noopener noreferrer">
+              <FaInstagram />
+            </a>
+
+            <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn" rel="noopener noreferrer">
+              <FaLinkedinIn />
+            </a>
           </div>
         </div>
 
