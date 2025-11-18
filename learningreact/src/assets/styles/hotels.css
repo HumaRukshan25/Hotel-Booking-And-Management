@@ -75,14 +75,21 @@ button:nth-child(3) {
   color: white;
 }
 
-
 .add-hotel-btn {
   padding: 10px 18px;
-  background-color: #9b3533 !important;
+  background-color: #800000; /* Maroon color */
   color: white;
   border-radius: 6px;
   margin-bottom: 20px;
   font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.add-hotel-btn:hover {
+  background-color: #a00000; /* Slightly lighter on hover */
+  transform: translateY(-2px);
 }
 
 /* filter/search  by hotel name ,location and sort  by price ,rating  */

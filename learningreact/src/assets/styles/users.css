@@ -1,58 +1,69 @@
-/* USERS CONTAINER */
+/* USERS PAGE CONTAINER */
 .users {
   display: flex;
   justify-content: center;
-  padding: 30px;
-  background: #f4f6f9;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #eef2f7 0%, #ffffff 100%);
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
 }
 
+/* CARD */
 .container {
-  width: 90%;
+  width: 95%;
   max-width: 1080px;
   background: #ffffff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease-in-out;
+}
+
+.container:hover {
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 /* HEADING */
 .container h2 {
   text-align: center;
-  color: #4A90E2;
-  font-size: 26px;
-  font-weight: 600;
+  color:  #872831;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 25px;
   letter-spacing: 1px;
 }
 
-/* ADD BUTTON */
-.addBtn {
-  background-color: #4A90E2;
+/* ADD USER BUTTON */
+.users .container .addBtn {
+  background-color: #872831;
   color: #fff;
-  padding: 10px 18px;
+  padding: 12px 22px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 15px;
-  font-weight: 500;
-  margin-bottom: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
   cursor: pointer;
-  transition: 0.3s ease-in-out;
+  transition: 0.3s;
 }
 
 .addBtn:hover {
-  background-color: #357ABD;
+  background-color:  #c43b49;
+  transform: translateY(-2px);
 }
 
 /* TABLE */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+  margin-top: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 thead {
-  background-color: #4A90E2;
+  background-color:  #872831;
   color: #fff;
 }
 
@@ -64,7 +75,7 @@ th, td {
 
 tbody tr {
   background-color: #f9fbfd;
-  transition: 0.2s ease;
+  transition: all 0.3s ease-in-out;
 }
 
 tbody tr:hover {
@@ -72,37 +83,70 @@ tbody tr:hover {
   transform: scale(1.01);
 }
 
+/* PROFILE IMAGE */
+tbody img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #4A90E2;
+  transition: 0.3s;
+}
+
+tbody img:hover {
+  transform: scale(1.1);
+  border-color:  #872831;
+}
+
 /* DELETE BUTTON */
 .btn-danger {
   background-color: #e74c3c;
   border: none;
-  padding: 8px 12px;
+  padding: 8px 14px;
   border-radius: 6px;
   color: white;
+  font-weight: 500;
   cursor: pointer;
-  transition: 0.3s ease-in-out;
+  transition: 0.3s;
 }
 
 .btn-danger:hover {
   background-color: #c0392b;
+  transform: translateY(-1px);
 }
 
 /* UPDATE BUTTON */
 .btn-update {
   background-color: #2ecc71;
   border: none;
-  padding: 8px 12px;
+  padding: 8px 14px;
   border-radius: 6px;
   color: white;
+  font-weight: 500;
   cursor: pointer;
-  transition: 0.3s ease-in-out;
+  transition: 0.3s;
 }
 
 .btn-update:hover {
   background-color: #27ae60;
+  transform: translateY(-1px);
 }
 
-/* RESPONSIVE FOR MOBILE */
+/* NO USERS FOUND */
+.container h2 + h2 {
+  color: #999;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  th, td {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
 @media (max-width: 768px) {
   th, td {
     font-size: 13px;
@@ -111,5 +155,11 @@ tbody tr:hover {
 
   .addBtn {
     width: 100%;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
   }
 }

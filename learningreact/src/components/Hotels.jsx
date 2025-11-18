@@ -113,7 +113,7 @@ const Hotels = () => {
           <button
             style={{
               padding: "10px 18px",
-              background: "green",
+              background: "maroon",
               color: "white",
               borderRadius: "6px",
               cursor: "pointer",
