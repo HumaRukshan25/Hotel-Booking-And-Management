@@ -117,3 +117,26 @@ button:nth-child(3) {
 .hotels-page {
   padding: 20px;
 }
+
+/* for star rating  */
+
+/* ⭐ STAR RATING STYLE */
+.stars {
+  display: inline-flex;
+  margin-left: 6px;
+}
+
+.star {
+  font-size: 20px;
+  color: transparent;
+  /* hollow star */
+  -webkit-text-stroke: 1px #000;
+  /* black border */
+  margin-right: 2px;
+}
+
+.star.filled {
+  color: gold;
+  /* golden filled star */
+  -webkit-text-stroke: 1px gold;
+}

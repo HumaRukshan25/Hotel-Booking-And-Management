@@ -40,6 +40,31 @@ const ReadHotels = () => {
     navigate(isAdmin ? "/adminportal/hotels" : "/usersportal/hotels");
   };
 
+  const renderStars = (rating) => {
+    const stars = [];
+
+    // ⭐ Round .5 and above UP
+    const rounded = Math.round(rating);
+
+    // ⭐ Full gold stars
+    for (let i = 0; i < rounded; i++) {
+      stars.push(
+        <span key={i} style={{ color: "#FFD700", fontSize: "20px" }}>★</span>
+      );
+    }
+
+    // ⭐ Grey empty stars
+    for (let i = rounded; i < 5; i++) {
+      stars.push(
+        <span key={"e" + i} style={{ color: "#ccc", fontSize: "20px" }}>★</span>
+      );
+    }
+
+    return stars;
+  };
+
+
+
   const bookHotel = async () => {
     const user_id = localStorage.getItem("userId");
     if (!user_id) {
@@ -85,7 +110,12 @@ const ReadHotels = () => {
       <div className="right">
         <div className="title">Location: {hotelLocation}</div>
         <div className="title">Price: ₹{price}</div>
-        <div className="title">Rating: ⭐ {rating}</div>
+        <div className="star-rating">
+          Rating:{renderStars(rating)}
+          <span style={{ color: "#555", marginLeft: "4px" }}>({rating})</span>
+        </div>
+
+
 
         <button className="clr" onClick={() => setShowDesc(!showDesc)}>
           {showDesc ? "Hide Description" : "Show Description"}

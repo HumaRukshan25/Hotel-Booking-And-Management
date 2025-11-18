@@ -126,3 +126,37 @@ button:disabled {
     height: 280px;
   }
 }
+
+
+/* for star rating  */
+.star-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #100f0f;
+  margin-bottom: 10px;
+}
+
+
+.star-rating .star {
+  font-size: 22px;
+  cursor: default;
+  transition: transform 0.2s ease-in-out;
+}
+
+.star-rating .star.filled {
+  color: #FFD700;
+  /* Gold star */
+}
+
+.star-rating .star.empty {
+  color: #ccc;
+  /* Grey empty star */
+}
+
+.star-rating .star:hover {
+  transform: scale(1.1);
+}

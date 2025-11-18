@@ -86,6 +86,25 @@ const Hotels = () => {
   if (loading) return <div>Loading hotels...</div>;
   if (error) return <div>{error}</div>;
 
+
+  // ⭐ Generate Star Rating UI Based on Decimal Rating
+  const renderStars = (rating) => {
+    const rounded = Math.round(rating); // 1.1→1, 1.5→2, 3.4→3, 3.5→4
+
+    return (
+      <div className="stars">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <span
+            key={star}
+            className={star <= rounded ? "star filled" : "star"}
+          >
+            ★
+          </span>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div className="hotels-page">
       {/* Admin: Add Hotel Button */}
@@ -148,7 +167,12 @@ const Hotels = () => {
                   <h3>{name}</h3>
                   <p><strong>Location:</strong> {hotelLocation}</p>
                   <p><strong>Price:</strong> ₹{price}</p>
-                  <p><strong>Rating:</strong> {rating} ⭐</p>
+
+                  <div>
+                    <strong>Rating:</strong> {rating}
+                    {renderStars(rating)}
+                  </div>
+
                   <p><strong>Description:</strong> {description}</p>
                   <div style={{ marginTop: 12, display: "flex", gap: "8px" }}>
                     <button onClick={() => readHotel(id)}>View</button>
