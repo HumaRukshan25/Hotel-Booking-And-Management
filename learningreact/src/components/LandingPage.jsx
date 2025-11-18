@@ -99,7 +99,7 @@ const LandingPage = () => {
               <NavLink to="/usersignup" className="signup-link">
                 Signup / Register
               </NavLink>
-              <br />
+          
               <NavLink to="/forgotpassword" className="forgot-link" style={{ marginLeft: "15px" }}>
                 Forgot Password?
               </NavLink>
