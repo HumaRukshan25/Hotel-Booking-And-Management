@@ -15,7 +15,7 @@ from crud import get_user_by_email, save_reset_token, update_password
 from utils import verify_password
 from utils import hash_password
 from schemas import UserCreate, UserResponse, UserUpdate, UserLogin
-from schemas import AdminLogin
+from schemas import AdminLogin, AdminCreate
 
 
 
@@ -327,4 +327,62 @@ def reset_password(
     # Pass plain text password - it gets hashed in update_password
     update_password(db, user, request.password)
     return {"success": True, "message": "Password updated successfully"}
+
+# Create a new admin
+@app.post("/admins/")
+def create_admin(admin: AdminCreate, db: Session = Depends(get_db)):
+    existing_admin = db.query(Admin).filter(Admin.email == admin.email).first()
+    if existing_admin:
+        raise HTTPException(status_code=400, detail="Admin already exists")
+
+    new_admin = Admin(
+        username=admin.username,
+        email=admin.email,
+        password=hash_password(admin.password)
+    )
+    db.add(new_admin)
+    db.commit()
+    db.refresh(new_admin)
+    return {"message": "Admin created successfully", "admin": new_admin}
+
+# List all admins
+@app.get("/admins/")
+def list_admins(db: Session = Depends(get_db)):
+    admins = db.query(Admin).all()
+    return admins
+
+@app.get("/admins/{admin_id}")
+def get_admin(admin_id: int, db: Session = Depends(get_db)):
+    admin = db.query(Admin).filter(Admin.id == admin_id).first()
+    if not admin:
+        raise HTTPException(status_code=404, detail="Admin not found")
+    return admin
+
+# ===================== UPDATE =====================
+@app.put("/admins/{admin_id}")
+def update_admin(admin_id: int, data: AdminCreate, db: Session = Depends(get_db)):
+    admin = db.query(Admin).filter(Admin.id == admin_id).first()
+    if not admin:
+        raise HTTPException(status_code=404, detail="Admin not found")
+
+    admin.username = data.username
+    admin.email = data.email
+    admin.password = hash_password(data.password)
+
+    db.commit()
+    db.refresh(admin)
+    return {"message": "Admin updated successfully", "admin": admin}
+
+# ===================== DELETE =====================
+@app.delete("/admins/{admin_id}")
+def delete_admin(admin_id: int, db: Session = Depends(get_db)):
+    admin = db.query(Admin).filter(Admin.id == admin_id).first()
+    if not admin:
+        raise HTTPException(status_code=404, detail="Admin not found")
+
+    db.delete(admin)
+    db.commit()
+    return {"message": "Admin deleted successfully"}
+
+
 

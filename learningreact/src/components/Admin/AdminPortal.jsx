@@ -11,6 +11,7 @@ import AddHotel from '../AddHotel'
 import Users from '../Users'
 import UpdateUser from './UpdateUser'
 import Footer from '../Footer'
+import AddAdmins from './AddAdmins'
 
 const AdminPortal = () => {
   return (
@@ -26,6 +27,7 @@ const AdminPortal = () => {
         <Route path="addhotel" element={<AddHotel />} />
         <Route path='/contacts' element={<Contact />} />
         <Route path="/updateuser/:id" element={<UpdateUser />} />
+        <Route path='/addadmins' element={<AddAdmins />} />
 
       </Routes>
       <Footer/>

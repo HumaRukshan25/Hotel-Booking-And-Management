@@ -19,6 +19,7 @@ const Navbar = () => {
               <li><NavLink to="/adminportal">Home</NavLink></li>
               <li><NavLink to="/adminportal/hotels">Hotels</NavLink></li>
               <li><NavLink to="/adminportal/addusers">Add users</NavLink></li> 
+              <li><NavLink to="/adminportal/addadmins">Add admins</NavLink></li> 
               <li><NavLink to="/adminportal/users">Users</NavLink></li> 
               <li><NavLink to="/">Logout</NavLink></li>
             </ul>

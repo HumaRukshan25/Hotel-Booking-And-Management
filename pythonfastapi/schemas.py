@@ -58,6 +58,12 @@ class UserLogin(BaseModel):
     email: EmailStr
     password: str
 
+    # ================== ADMIN ==================
+class AdminCreate(BaseModel):
+    username: str
+    email: EmailStr
+    password: str
+
 class AdminLogin(BaseModel):
     email: EmailStr
     password: str

@@ -1,0 +1,97 @@
+/* Wrapper */
+.addusers {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  display: block; /* IMPORTANT: to force vertical stacking */
+}
+
+/* Heading */
+.addusers h2 {
+  text-align: left;
+  margin-bottom: 15px;
+  font-size: 22px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Form box */
+.addusers form {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 40px;
+}
+
+.addusers form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.addusers form button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to right, #b31217, #7e0a0f);
+  border: none;
+  color: #fff;
+  font-size: 17px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.addusers form button:hover {
+  opacity: 0.9;
+}
+
+/* Table Styling */
+.addusers table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.addusers th, 
+.addusers td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+}
+
+.addusers th {
+  background: #f8f8f8;
+  font-weight: 700;
+}
+
+.addusers td button {
+  padding: 6px 12px;
+  margin-right: 6px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.addusers td button:nth-child(1) {
+  background: #f0ad4e;
+  color: white;
+}
+
+.addusers td button:nth-child(2) {
+  background: #d9534f;
+  color: white;
+}
+
+.addusers td button:hover {
+  opacity: 0.8;
+}
