@@ -147,3 +147,28 @@ button:nth-child(3) {
   /* golden filled star */
   -webkit-text-stroke: 1px gold;
 }
+/*  */
+/* Enhanced Hover Effect */
+.hotel-card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, scale 0.3s ease;
+  cursor: pointer;
+}
+
+.hotel-card:hover {
+  transform: translateY(-8px);
+  scale: 1.03;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* Image zoom on hover */
+.hotel-card:hover .hotel-image img {
+  transform: scale(1.08);
+}
+
+.hotel-image img {
+  transition: transform 0.4s ease;
+}
