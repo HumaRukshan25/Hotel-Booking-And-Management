@@ -96,6 +96,7 @@ const LandingPage = () => {
 
           {!isAdmin && (
             <div className="links-container">
+              <b>Don't have an account</b>
               <NavLink to="/usersignup" className="signup-link">
                 Signup / Register
               </NavLink>
