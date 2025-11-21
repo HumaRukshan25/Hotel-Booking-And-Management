@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../assets/styles/addusers.css";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { FaUserCircle } from "react-icons/fa";   // ✅ Profile Icon
 
 const API_BASE = "http://127.0.0.1:8000/users/";
 
@@ -13,7 +14,7 @@ const AddUser = () => {
   });
 
   const navigate = useNavigate();
-  const { id } = useParams(); // If id exists, then it's update
+  const { id } = useParams();
 
   // Fetch user details for update
   useEffect(() => {
@@ -51,7 +52,9 @@ const AddUser = () => {
   return (
     <div className="addusers">
       <form onSubmit={handleSubmit}>
-
+        <div className="profile-icon-wrapper">
+          <FaUserCircle className="profile-icon" />
+        </div>
         <input
           type="text"
           name="username"

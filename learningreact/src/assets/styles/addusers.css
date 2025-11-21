@@ -27,6 +27,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -76,4 +77,18 @@
     width: 90%;
     padding: 30px;
   }
+}
+
+/*  */
+
+/* Profile Icon */
+.profile-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.profile-icon {
+  font-size: 70px;
+  color: #4a4a4a;
 }

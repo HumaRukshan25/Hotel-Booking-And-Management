@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../../assets/styles/updateuser.css"
+import { FaUserCircle } from "react-icons/fa";   // ✅ Profile Icon
+import "../../assets/styles/updateuser.css";
 
 const API_BASE = "http://127.0.0.1:8000/users/";
 
@@ -29,40 +30,44 @@ const UpdateUser = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Submit Update
- // Submit Update
-const handleUpdate = async (e) => {
-  e.preventDefault();
+  // Update User
+  const handleUpdate = async (e) => {
+    e.preventDefault();
 
-  try {
-    await axios.put(
-      API_BASE + id,
-      {
-        username: formData.username,
-        email: formData.email,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
+    try {
+      await axios.put(
+        API_BASE + id,
+        {
+          username: formData.username,
+          email: formData.email,
         },
-      }
-    );
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-    alert("✅ User updated successfully");
-    navigate("/adminportal/users");
-  } catch (error) {
-    console.error("Update failed:", error.response?.data || error);
-    alert("❌ Update failed. Check backend logs.");
-  }
-};
-
-
+      alert("✅ User updated successfully");
+      navigate("/adminportal/users");
+    } catch (error) {
+      console.error("Update failed:", error.response?.data || error);
+      alert("❌ Update failed. Check backend logs.");
+    }
+  };
 
   return (
     <div className="update-user-container">
+
+      {/* ✅ Profile Icon */}
+
+
       <h2>Update User</h2>
 
       <form onSubmit={handleUpdate}>
+        <div className="profile-icon-wrapper">
+          <FaUserCircle className="profile-icon" />
+        </div>
         <input
           type="text"
           name="username"

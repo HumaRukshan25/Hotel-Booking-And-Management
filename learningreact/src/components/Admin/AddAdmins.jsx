@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../../assets/styles/addadmin.css";
+import { FaUserCircle } from "react-icons/fa";
 
 const API_BASE = "http://127.0.0.1:8000/admins/";
 
@@ -83,6 +84,9 @@ const AddAdmins = () => {
     <div className="addusers">
       <h2>{editId ? "Update Admin" : "Add Admin"}</h2>
       <form onSubmit={handleSubmit}>
+        <div className="profile-icon-wrapper">
+          <FaUserCircle className="profile-icon" />
+        </div>
         <input
           type="text"
           name="username"
