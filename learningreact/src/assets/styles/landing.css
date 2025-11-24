@@ -1,94 +1,47 @@
-/* FULL SCREEN BACKGROUND */
-/* .landingpage {
-  height: 100vh;
-  width: 100%;
-  background: url("https://rclite.com/wp-content/uploads/2023/07/image-9.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
+/* ===========================
+   TWO SEPARATE LOGIN BUTTONS
+   =========================== */
+/* ===========================
+   TWO SEPARATE LOGIN BUTTONS (FIXED)
+   =========================== */
+/* ===========================
+   TWO SEPARATE LOGIN BUTTONS (SMALL + CLEAN)
+   =========================== */
+.btn-container-two {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px auto;
 }
 
+.switch-btn {
+  padding: 10px 20px;     /* Small size */
+  font-size: 15px;
+  font-weight: 600;
 
-.landingpage h1 {
-  margin-top: 3vh;
-  font-size: 32px;
-  color: #f8e8e8;
-  text-shadow: 3px 3px 10px black;
-  letter-spacing: 1px;
-  font-family: "Segoe UI", sans-serif;
-}
-
-.landingpage .login-container {
-  width: 35%;
-  height: auto;
-  padding-bottom: 2vh;
-  margin-top: 3vh;
-
-  border-radius: 20px;
-  backdrop-filter: blur(20px); 
-  background: rgba(184, 183, 183, 0.009); 
-  box-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
-
-  animation: fade-in 0.7s ease-in-out;
-} */
-
-
-
-
-
-
-/* Button switch container */
-.landingpage .btn-container {
-  width: 80%;
-  height: 7vh;
-  margin: 4vh auto;
-  border-radius: 50px;
-  background: rgba(35, 34, 34, 0.3);
-  position: relative;
-  overflow: hidden;
-  display: flex;
-}
-
-/* Sliding button */
-.landingpage .btn-container button {
-  width: 50%;
+  border-radius: 30px;
   border: none;
-  font-size: 18px;
-  font-weight: bold;
   cursor: pointer;
 
+  background: #ddd;
+  transition: 0.3s ease;
+  width: auto;            /* ❗ auto width — no broad button */
+}
+
+.switch-btn:hover {
+  background: #ccc;
+}
+
+.active-btn {
   background: linear-gradient(90deg, #7f1b19, #d46961);
-  color: rgb(251, 248, 248);
-  transition: transform 0.5s ease-in-out;
-
-  border-radius: 50px;
+  color: white;
+  transform: scale(1.06);
 }
 
-/* Admin: Slide Left */
-.admin-btn {
-  transform: translateX(0%);
-}
 
-/* User: Slide Right */
-.user-btn {
-  transform: translateX(100%);
-}
-
-/* Heading Text */
-/* .landingpage .heading {
-  text-align: center;
-  font-size: 25px;
-  color: #6d1e1e;
-  font-weight: bold;
-  margin-bottom: 2vh;
-  text-shadow: 1px 1px 2px #300000;
-} */
-
-
+/* ===========================
+   HEADING
+   =========================== */
 .landingpage .heading {
   text-align: center;
   font-size: 25px;
@@ -96,147 +49,55 @@
   font-weight: bold;
   margin-bottom: 2vh;
   -webkit-text-stroke: 1px white;
-  /* White outline for text */
 }
 
-/* Form Slide Container */
+/* ===========================
+   SLIDER CONTAINER
+   =========================== */
 .login-slider {
   width: 100%;
-  height: auto;
   position: relative;
   overflow: hidden;
 }
 
-/* Sliding Wrapper */
 .form-wrapper {
   width: 100%;
   transition: transform 0.5s ease-in-out;
 }
 
-/* Inputs and Buttons from forms */
+/* ===========================
+   INPUT FIELD STYLES
+   =========================== */
+/* ===========================
+   INPUT FIELD STYLES (FIXED)
+   =========================== */
 .landingpage input {
-  width: 80%;
+  width: 70%;      /* reduced width */
+  max-width: 280px; /* prevents stretching even on large screens */
+
   display: block;
   margin: 12px auto;
-  padding: 12px;
+  padding: 10px;
 
   border-radius: 8px;
   border: none;
   outline: none;
 
-  background: rgba(255, 245, 245, 0.8);
+  background: rgba(255, 245, 245, 0.85);
   backdrop-filter: blur(10px);
   font-size: 15px;
+
+  transition: 0.2s ease-in-out;
 }
 
 .landingpage input:focus {
   border: 2px solid #ac4c4c;
+  background: rgba(255, 245, 245, 1);
 }
 
-/* Signup link */
-.links-container {
-  text-align: center;
-  margin-top: 1vh;
-}
-
-.signup-link {
-  font-size: 16px;
-  color: #c29626;
-  font-weight: bold;
-}
-
-/* .signup-link:hover {
-  color: #c96464;
-  text-decoration: underline;
-} */
-
-/* smooth fade animation */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-
-/* Add these to your landing.css */
-
-/* Wrapper for entire landing page with footer */
-.landing-page-wrapper {
-  min-height: 140vh;
-  display: flex;
-  flex-direction: column;
-}
-
-
-/* Keep your existing landingpage styles but remove height: 100vh */
-.landingpage {
-  width: 100%;
-  flex: 1;
-  /* This makes it take remaining space */
-  background: url("https://rclite.com/wp-content/uploads/2023/07/image-9.jpg");
-  /* Remove height: 100vh */
-  /* background: url("https://rclite.com/wp-content/uploads/2023/07/image-9.jpg"); */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* Center content vertically */
-  padding: 40px 0;
-  /* Add some padding */
-}
-
-/* Adjust login container margin for better spacing */
-.landingpage .login-container {
-  width: 35%;
-  height: auto;
-  padding-bottom: 2vh;
-  margin-top: 0;
-  /* Remove top margin since we're centering */
-  border-radius: 20px;
-  backdrop-filter: blur(20px);
-  background: rgba(184, 183, 183, 0.009);
-  box-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
-  animation: fade-in 0.7s ease-in-out;
-}
-
-/* Adjust title margin */
-.landingpage h1 {
-  margin-top: 0;
-  /* Remove top margin */
-  margin-bottom: 2vh;
-  /* Add bottom margin */
-  font-size: 32px;
-  color: #f8e8e8;
-  text-shadow: 3px 3px 10px black;
-  letter-spacing: 1px;
-  font-family: "Segoe UI", sans-serif;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .landingpage .login-container {
-    width: 90%;
-    margin: 20px auto;
-  }
-
-  .landingpage h1 {
-    font-size: 24px;
-    text-align: center;
-    padding: 0 20px;
-  }
-}
-
-/* like button signup and forgot password */
-/* Landing Page Links as Buttons */
+/* ===========================
+   SIGNUP LINKS
+   =========================== */
 .links-container {
   margin-top: 10px;
   display: flex;
@@ -246,7 +107,6 @@
 }
 
 .links-container a {
-  display: inline-block;
   text-decoration: none;
   background-color: #228f50;
   color: #fff;
@@ -261,4 +121,112 @@
 .links-container a:hover {
   background-color: #46a171;
   transform: scale(1.05);
+}
+
+/* ===========================
+   WHOLE PAGE WRAPPER
+   =========================== */
+.landing-page-wrapper {
+  min-height: 140vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===========================
+   MAIN LANDING PAGE
+   =========================== */
+.landingpage {
+  width: 100%;
+  flex: 1;
+  background: url("https://rclite.com/wp-content/uploads/2023/07/image-9.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 0;
+}
+
+.landingpage .login-container {
+  width: 35%;
+  padding-bottom: 2vh;
+
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  background: rgba(184, 183, 183, 0.009);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
+
+  animation: fade-in 0.7s ease-in-out;
+}
+
+.landingpage h1 {
+  margin-top: 0;
+  margin-bottom: 2vh;
+  font-size: 32px;
+  color: #f8e8e8;
+  text-shadow: 3px 3px 10px black;
+  letter-spacing: 1px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ===========================
+   ANIMATION
+   =========================== */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 768px) {
+  .landingpage .login-container {
+    width: 90%;
+  }
+
+  .landingpage h1 {
+    font-size: 24px;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .btn-container-two {
+    width: 95%;
+  }
+}
+/* ===========================
+   GLASS TRANSPARENT BOX
+   =========================== */
+.glass-container {
+  width: 380px;
+  margin: 20px auto;
+  padding: 25px 22px;
+
+  /* More transparent glass */
+  background: rgba(255, 255, 255, 0.08);   /* ↓ from 0.12 → 0.08 */
+
+  border-radius: 18px;
+
+  /* Stronger blur = better glass look */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  /* Softer border */
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  /* Soft shadow */
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
+
+  animation: fade-in 0.7s ease-in-out;
 }
