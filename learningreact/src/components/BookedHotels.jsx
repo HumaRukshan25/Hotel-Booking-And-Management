@@ -177,7 +177,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../assets/styles/bookedhotels.css";
 
-const API_BASE = "http://127.0.0.1:8000";
+// const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "http://192.168.0.122:8000"; // your backend machine's LAN IP
+
 
 const BookedHotels = () => {
   const [bookedHotels, setBookedHotels] = useState([]);

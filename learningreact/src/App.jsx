@@ -4,7 +4,7 @@ import LandingPage from './components/LandingPage'
 import AdminPortal from './components/Admin/AdminPortal'
 import UsersPortal from './components/Users/UsersPortal'
 import UserSignup from './components/Users/UserSignup'
-import ForgotPassword from './components/Users/forgotpassword'
+
 import ResetPassword from './components/Users/ResetPassword'
 import Help from './pages/Help'
 import FAQ from './pages/FAQ'
@@ -12,6 +12,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import Terms from './pages/Terms'
 import HotelsFooter from './pages/HotelsFooter'
 import ContactFooter from './pages/ContactFooter'
+import ForgotPassword from './components/Users/ForgotPassword'
 
 const App = () => {
   return (

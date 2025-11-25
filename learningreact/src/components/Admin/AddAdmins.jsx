@@ -3,7 +3,9 @@ import axios from "axios";
 import "../../assets/styles/addadmin.css";
 import { FaUserCircle } from "react-icons/fa";
 
-const API_BASE = "http://127.0.0.1:8000/admins/";
+// const API_BASE = "http://127.0.0.1:8000/admins/";
+const API_BASE = "http://192.168.0.122:8000/admins/";
+
 
 const AddAdmins = () => {
   const [formData, setFormData] = useState({

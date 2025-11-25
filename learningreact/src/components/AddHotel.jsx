@@ -117,7 +117,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../assets/styles/addhotel.css";
 
-const API_BASE = "http://127.0.0.1:8000";
+// const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "http://192.168.0.122:8000"; // your backend machine's LAN IP
+
 
 const AddHotel = () => {
   const [form, setForm] = useState({

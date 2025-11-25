@@ -23,18 +23,24 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+
 origins = [
     "http://localhost:5173",
-    "http://127.0.0.1:5173"
+    "http://127.0.0.1:5173",
+    "http://192.168.0.122:5173",  # React frontend IP on your LAN
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=origins,  # Allowed frontend origins
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+
+
 
 def get_db():
     db = SessionLocal()
