@@ -82,10 +82,17 @@ const Footer = () => {
         <div className="footer-section">
           <h4>Contact Info</h4>
           <div className="contact-info">
-            <p>📧 support@hotelbooking.com</p>
-            <p>📞 +1 (555) 123-4567</p>
+            <p>
+              📧 <a href="mailto:support@hotelbooking.com">support@hotelbooking.com</a>
+            </p>
+
+            <p>
+              📞 <a href="tel:+15551234567">+1 (555) 123-4567</a>
+            </p>
+
             <p>📍 123 Hotel Street, City, Country</p>
           </div>
+
         </div>
       </div>
 

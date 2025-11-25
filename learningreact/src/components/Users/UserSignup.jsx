@@ -106,6 +106,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../../assets/styles/signup.css";
+import Footer from "../Footer";
 
 const API_BASE = "http://192.168.0.122:8000";
 
@@ -116,27 +117,42 @@ const UserSignup = () => {
     username: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const [passwordStrength, setPasswordStrength] = useState("");
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: "" });
+    const { name, value } = e.target;
+
+    // Password strength checker
+    if (name === "password") {
+      if (value.length < 6) {
+        setPasswordStrength("Weak password");
+      } else if (/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(value)) {
+        setPasswordStrength("Strong password");
+      } else {
+        setPasswordStrength("Medium password");
+      }
+    }
+
+    setForm({ ...form, [name]: value });
+    setErrors({ ...errors, [name]: "" });
   };
 
   const validate = () => {
     let newErrors = {};
 
-    // Username validation
+    // Username
     if (!form.username) {
       newErrors.username = "Username is required.";
     } else if (form.username.length < 4) {
       newErrors.username = "Username must be at least 4 characters.";
     }
 
-    // Email validation
+    // Email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!form.email) {
       newErrors.email = "Email is required.";
@@ -144,7 +160,7 @@ const UserSignup = () => {
       newErrors.email = "Enter a valid email.";
     }
 
-    // Password validation
+    // Password
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
     if (!form.password) {
       newErrors.password = "Password is required.";
@@ -153,6 +169,13 @@ const UserSignup = () => {
     } else if (!passwordRegex.test(form.password)) {
       newErrors.password =
         "Password must be 6+ characters and include letters & numbers.";
+    }
+
+    // Confirm Password
+    if (!form.confirmPassword) {
+      newErrors.confirmPassword = "Confirm Password is required.";
+    } else if (form.password !== form.confirmPassword) {
+      newErrors.confirmPassword = "Passwords do not match.";
     }
 
     setErrors(newErrors);
@@ -166,14 +189,17 @@ const UserSignup = () => {
     setLoading(true);
 
     try {
-      await axios.post(`${API_BASE}/users/`, form);
+      await axios.post(`${API_BASE}/users/`, {
+        username: form.username,
+        email: form.email,
+        password: form.password,
+      });
 
       alert("Signup successful!");
       navigate("/");
     } catch (error) {
       console.error(error);
 
-      // Email already exists handling
       if (error.response?.status === 400 || error.response?.status === 409) {
         setErrors({ ...errors, email: "Email already exists." });
       } else if (error.response?.data?.detail) {
@@ -187,15 +213,9 @@ const UserSignup = () => {
   };
 
   return (
-    <div
-      className="signup-form-container"
-      style={{
-        maxWidth: "330px",
-        margin: "auto",
-        marginTop: "50px",
-        padding: "20px",
-      }}
-    >
+  <div className="signup-page-bg">
+
+    <div className="signup-form-container">
       <h4>Create Your Account</h4>
 
       <form
@@ -239,26 +259,51 @@ const UserSignup = () => {
             value={form.password}
             onChange={handleChange}
           />
+
+          {passwordStrength && (
+            <small
+              style={{
+                color:
+                  passwordStrength === "Strong password"
+                    ? "green"
+                    : passwordStrength === "Medium password"
+                    ? "orange"
+                    : "red",
+              }}
+            >
+              {passwordStrength}
+            </small>
+          )}
+
           {errors.password && (
             <small style={{ color: "red" }}>{errors.password}</small>
           )}
         </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-          style={{
-            padding: "10px",
-            marginTop: "10px",
-            cursor: loading ? "not-allowed" : "pointer",
-          }}
-        >
+        {/* Confirm Password */}
+        <div>
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            value={form.confirmPassword}
+            onChange={handleChange}
+          />
+          {errors.confirmPassword && (
+            <small style={{ color: "red" }}>{errors.confirmPassword}</small>
+          )}
+        </div>
+
+        <button type="submit" disabled={loading}>
           {loading ? "Signing Up..." : "Sign Up"}
         </button>
       </form>
     </div>
-  );
+
+    <Footer />
+  </div>
+);
+
 };
 
 export default UserSignup;
-

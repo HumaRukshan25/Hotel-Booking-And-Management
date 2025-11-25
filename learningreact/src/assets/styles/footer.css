@@ -200,3 +200,13 @@ main {
 .contact-info p {
   font-weight: 500;
 }
+
+.footer .contact-info a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.footer .contact-info a:hover {
+  text-decoration: underline;
+}
