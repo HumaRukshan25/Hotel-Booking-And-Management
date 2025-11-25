@@ -197,7 +197,7 @@ const UserLogin = () => {
         <button
           disabled={loading}
           style={{
-            width: "80%",
+            width: "70%",
             display: "block",
             margin: "2vh auto",
             padding: "12px",

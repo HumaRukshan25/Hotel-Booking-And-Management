@@ -1,12 +1,105 @@
+// import React, { useState, useEffect } from "react";
+// import "../../assets/styles/addusers.css";
+// import { useNavigate, useParams } from "react-router-dom";
+// import axios from "axios";
+// import { FaUserCircle } from "react-icons/fa";   // ✅ Profile Icon
+
+// // const API_BASE = "http://127.0.0.1:8000/users/";
+// const API_BASE = "http://192.168.0.122:8000/users/";
+
+
+// const AddUser = () => {
+//   const [formData, setFormData] = useState({
+//     username: "",
+//     email: "",
+//     password: "",
+//   });
+
+//   const navigate = useNavigate();
+//   const { id } = useParams();
+
+//   // Fetch user details for update
+//   useEffect(() => {
+//     if (id) {
+//       axios.get(API_BASE + id).then((res) => {
+//         setFormData({
+//           username: res.data.username,
+//           email: res.data.email,
+//           password: res.data.password,
+//         });
+//       });
+//     }
+//   }, [id]);
+
+//   // Handle input change
+//   const handleChange = (e) => {
+//     setFormData({ ...formData, [e.target.name]: e.target.value });
+//   };
+
+//   // Add / Update user
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     if (id) {
+//       await axios.put(API_BASE + id, formData);
+//       alert("✅ User Updated Successfully");
+//     } else {
+//       await axios.post(API_BASE, formData);
+//       alert("✅ User Added Successfully");
+//     }
+
+//     navigate("/adminportal/users");
+//   };
+
+//   return (
+//     <div className="addusers">
+//       <form onSubmit={handleSubmit}>
+//         <div className="profile-icon-wrapper">
+//           <FaUserCircle className="profile-icon" />
+//         </div>
+//         <input
+//           type="text"
+//           name="username"
+//           placeholder="Enter Username"
+//           value={formData.username}
+//           onChange={handleChange}
+//           required
+//         />
+
+//         <input
+//           type="email"
+//           name="email"
+//           placeholder="Enter Email"
+//           value={formData.email}
+//           onChange={handleChange}
+//           required
+//         />
+
+//         <input
+//           type="password"
+//           name="password"
+//           placeholder="Enter Password"
+//           value={formData.password}
+//           onChange={handleChange}
+//           required
+//         />
+
+//         <button type="submit">{id ? "Update User" : "Add User"}</button>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default AddUser;
+
+
 import React, { useState, useEffect } from "react";
 import "../../assets/styles/addusers.css";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { FaUserCircle } from "react-icons/fa";   // ✅ Profile Icon
+import { FaUserCircle } from "react-icons/fa";
 
-// const API_BASE = "http://127.0.0.1:8000/users/";
 const API_BASE = "http://192.168.0.122:8000/users/";
-
 
 const AddUser = () => {
   const [formData, setFormData] = useState({
@@ -15,10 +108,10 @@ const AddUser = () => {
     password: "",
   });
 
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   const { id } = useParams();
 
-  // Fetch user details for update
   useEffect(() => {
     if (id) {
       axios.get(API_BASE + id).then((res) => {
@@ -31,14 +124,48 @@ const AddUser = () => {
     }
   }, [id]);
 
-  // Handle input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: "" });
   };
 
-  // Add / Update user
+  const validate = () => {
+    let newErrors = {};
+
+    // Username
+    if (!formData.username) {
+      newErrors.username = "Username is required.";
+    } else if (formData.username.length < 4) {
+      newErrors.username = "Username must be at least 4 characters.";
+    }
+
+    // Email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email) {
+      newErrors.email = "Email is required.";
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = "Enter a valid email.";
+    }
+
+    // Password
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    if (!formData.password) {
+      newErrors.password = "Password is required.";
+    } else if (formData.password.includes(" ")) {
+      newErrors.password = "Password must not contain spaces.";
+    } else if (!passwordRegex.test(formData.password)) {
+      newErrors.password =
+        "Password must include letters & numbers (min 6 chars).";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validate()) return;
 
     if (id) {
       await axios.put(API_BASE + id, formData);
@@ -57,32 +184,39 @@ const AddUser = () => {
         <div className="profile-icon-wrapper">
           <FaUserCircle className="profile-icon" />
         </div>
-        <input
-          type="text"
-          name="username"
-          placeholder="Enter Username"
-          value={formData.username}
-          onChange={handleChange}
-          required
-        />
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
+        <div>
+          <input
+            type="text"
+            name="username"
+            placeholder="Enter Username"
+            value={formData.username}
+            onChange={handleChange}
+          />
+          {errors.username && <small style={{ color: "red" }}>{errors.username}</small>}
+        </div>
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
+        <div>
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter Email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          {errors.email && <small style={{ color: "red" }}>{errors.email}</small>}
+        </div>
+
+        <div>
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter Password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+          {errors.password && <small style={{ color: "red" }}>{errors.password}</small>}
+        </div>
 
         <button type="submit">{id ? "Update User" : "Add User"}</button>
       </form>
