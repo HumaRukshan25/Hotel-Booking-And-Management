@@ -26,7 +26,7 @@ const UserSignup = () => {
 
     // Password strength checker
     if (name === "password") {
-      if (value.length < 6) {
+      if (value.length < 8) {
         setPasswordStrength("Weak password");
       } else if (/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(value)) {
         setPasswordStrength("Strong password");
@@ -65,7 +65,7 @@ const UserSignup = () => {
       newErrors.password = "Password must not contain spaces.";
     } else if (!passwordRegex.test(form.password)) {
       newErrors.password =
-        "Password must be 6+ characters and include letters & numbers.";
+        "Password must be 8+ characters and include letters & numbers.";
     }
 
     // Confirm Password

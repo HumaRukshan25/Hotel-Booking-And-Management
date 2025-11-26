@@ -92,7 +92,6 @@
 
 // export default AddUser;
 
-
 import React, { useState, useEffect } from "react";
 import "../../assets/styles/addusers.css";
 import { useNavigate, useParams } from "react-router-dom";
@@ -106,6 +105,7 @@ const AddUser = () => {
     username: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -119,6 +119,7 @@ const AddUser = () => {
           username: res.data.username,
           email: res.data.email,
           password: res.data.password,
+          confirmPassword: res.data.password,
         });
       });
     }
@@ -129,7 +130,22 @@ const AddUser = () => {
     setErrors({ ...errors, [e.target.name]: "" });
   };
 
-  const validate = () => {
+  const checkEmailExists = async (email) => {
+    try {
+      const res = await axios.get(API_BASE);
+      const users = res.data;
+
+      const userExists = users.some(
+        (u) => u.email.trim().toLowerCase() === email.trim().toLowerCase()
+      );
+
+      return userExists;
+    } catch {
+      return false;
+    }
+  };
+
+  const validate = async () => {
     let newErrors = {};
 
     // Username
@@ -145,10 +161,16 @@ const AddUser = () => {
       newErrors.email = "Email is required.";
     } else if (!emailRegex.test(formData.email)) {
       newErrors.email = "Enter a valid email.";
+    } else {
+      const exists = await checkEmailExists(formData.email);
+      if (!id && exists) {
+        newErrors.email = "Email already exists.";
+      }
     }
 
     // Password
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+
     if (!formData.password) {
       newErrors.password = "Password is required.";
     } else if (formData.password.includes(" ")) {
@@ -158,6 +180,13 @@ const AddUser = () => {
         "Password must include letters & numbers (min 6 chars).";
     }
 
+    // Confirm Password
+    if (!formData.confirmPassword) {
+      newErrors.confirmPassword = "Confirm password is required.";
+    } else if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = "Passwords do not match.";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -165,13 +194,19 @@ const AddUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validate()) return;
+    if (!(await validate())) return;
+
+    const payload = {
+      username: formData.username,
+      email: formData.email,
+      password: formData.password,
+    };
 
     if (id) {
-      await axios.put(API_BASE + id, formData);
+      await axios.put(API_BASE + id, payload);
       alert("✅ User Updated Successfully");
     } else {
-      await axios.post(API_BASE, formData);
+      await axios.post(API_BASE, payload);
       alert("✅ User Added Successfully");
     }
 
@@ -216,6 +251,19 @@ const AddUser = () => {
             onChange={handleChange}
           />
           {errors.password && <small style={{ color: "red" }}>{errors.password}</small>}
+        </div>
+
+        <div>
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+          />
+          {errors.confirmPassword && (
+            <small style={{ color: "red" }}>{errors.confirmPassword}</small>
+          )}
         </div>
 
         <button type="submit">{id ? "Update User" : "Add User"}</button>
