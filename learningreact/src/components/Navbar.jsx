@@ -18,14 +18,14 @@ const Navbar = () => {
             <ul>
               <li><NavLink to="/adminportal">Home</NavLink></li>
               <li><NavLink to="/adminportal/hotels">Hotels</NavLink></li>
-              <li><NavLink to="/adminportal/addusers">Add users</NavLink></li> 
-              <li><NavLink to="/adminportal/addadmins">Add admins</NavLink></li> 
+              <li><NavLink to="/adminportal/addusers">Add Users</NavLink></li> 
+              <li><NavLink to="/adminportal/addadmins">Add Admins</NavLink></li> 
               <li><NavLink to="/adminportal/users">Users</NavLink></li> 
               <li><NavLink to="/">Logout</NavLink></li>
             </ul>
             :
             <ul>
-              <li><NavLink to="/usersportal" >HOME</NavLink></li>
+              <li><NavLink to="/usersportal" >Home</NavLink></li>
               <li><NavLink to="/usersportal/hotels">Hotels</NavLink></li>
               <li><a href="/usersportal/booked-hotels">My Bookings</a></li>
               <li><NavLink to="/usersportal/contacts">Contact Us</NavLink></li>

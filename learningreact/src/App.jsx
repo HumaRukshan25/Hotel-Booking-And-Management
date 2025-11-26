@@ -13,6 +13,10 @@ import Terms from './pages/Terms'
 import HotelsFooter from './pages/HotelsFooter'
 import ContactFooter from './pages/ContactFooter'
 import ForgotPassword from './components/Users/ForgotPassword'
+import HelpUser from './pages/HelpUser'
+import FAQUser from './pages/FAQUser'
+import PrivacyPolicyUser from './pages/PrivacyPolicyUser'
+import TermsUser from './pages/TermsUser'
 
 const App = () => {
   return (
@@ -36,6 +40,14 @@ const App = () => {
           <Route path="/terms" element={<Terms />} />
           <Route path="/hotels" element={<HotelsFooter />} />
           <Route path="/contacts" element={<ContactFooter />} />
+
+
+          {/*  */}
+          <Route path="/usersportal/help" element={<HelpUser />} />
+<Route path="/usersportal/faq" element={<FAQUser />} />
+<Route path="/usersportal/privacy" element={<PrivacyPolicyUser />} />
+<Route path="/usersportal/terms" element={<TermsUser />} />
+
 
 
         </Routes>

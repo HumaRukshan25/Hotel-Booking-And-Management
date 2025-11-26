@@ -1,53 +1,101 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* HEADER MAIN */
 .header {
   width: 100%;
-  background: #50111c; /* Maroon background */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  height: 70px;
+  background: linear-gradient(135deg, #800000, #4b0000); /* same maroon gradient */
+  backdrop-filter: blur(6px);
   position: sticky;
   top: 0;
   z-index: 100;
-}
-
-.header-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px 20px;
+  box-shadow: 0px 2px 12px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
+/* INNER CONTAINER */
+.header-container {
+  max-width: 1300px;
+  width: 100%;
+  padding: 0 30px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* BRAND LOGO / TEXT */
 .brand a {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #fff; /* White text */
+  font-size: 26px;
+  font-weight: 700;
+  color: white;
   text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: 0.3s ease;
+}
+
+.brand a:hover {
+  opacity: 0.8;
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 35px;
 }
 
 .nav-links a {
-  margin-left: 20px;
-  font-size: 1rem;
-  color: #fff; /* White text */
+  position: relative;
   text-decoration: none;
-  transition: color 0.25s ease;
-}
-
-.nav-links a:hover {
-  color: #f3c6c6; /* Lighter maroon/pinkish hover */
-}
-
-.nav-links a.active {
+  font-size: 16px;
+  color: white;
   font-weight: 600;
-  color: #f3c6c6; /* Lighter maroon for active link */
+  padding: 6px 10px;
+  transition: 0.3s ease;
 }
 
-/* Responsive */
+/* Hover underline animation (same as navbar) */
+.nav-links a::after {
+  content: "";
+  width: 0;
+  height: 3px;
+  background: white;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Active link style */
+.nav-links a.active {
+  color: #f3f3f3;
+}
+
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .header-container {
     flex-direction: column;
-    gap: 10px;
+    padding: 10px;
+    height: auto;
   }
 
-  .nav-links a {
-    margin-left: 0;
+  .nav-links {
+    gap: 20px;
   }
 }
