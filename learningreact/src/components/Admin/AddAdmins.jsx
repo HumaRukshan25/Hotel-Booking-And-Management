@@ -528,7 +528,10 @@ const AddAdmins = () => {
 
   return (
     <div className="addusers">
-      <h2>{editId ? "Update Admin" : "Add Admin"}</h2>
+     <h2 style={{ textAlign: "center", color:"maroon" }}>
+  {editId ? "Update Admin" : "Add Admin"}
+</h2>
+
 
       {error && <p className="error-msg">{error}</p>}
 
@@ -576,7 +579,8 @@ const AddAdmins = () => {
         <button type="submit">{editId ? "Update Admin" : "Add Admin"}</button>
       </form>
 
-      <h2>All Admins</h2>
+      <h2  style={{ textAlign: "center", color:"maroon" }}>All Admins</h2>
+       
 
       <table>
         <thead>

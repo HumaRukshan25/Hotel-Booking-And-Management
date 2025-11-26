@@ -1,15 +1,9 @@
-.addusers {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #dfe9f3 0%, #ffffff 100%);
-  padding: 20px;
-  font-family: "Poppins", sans-serif;
-}
+
 
 /* Card */
 .addusers form {
+  margin-top: 40px;
+  margin-left: 220px;
   background: #ffffff;
   width: 420px;
   padding: 40px;
