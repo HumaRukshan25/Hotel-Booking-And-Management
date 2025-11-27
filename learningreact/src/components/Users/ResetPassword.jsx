@@ -6,7 +6,8 @@ import "../../assets/styles/signup1.css";
 import Footer from "../Footer";
 import Header from "../Header";
 
-const API_BASE = "http://192.168.0.122:8000";
+// const API_BASE = "http://192.168.0.122:8000";
+const API_BASE = "http://192.168.0.100:8000";
 
 const ResetPassword = () => {
   const [password, setPassword] = useState("");

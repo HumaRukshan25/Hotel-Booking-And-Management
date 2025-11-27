@@ -5,7 +5,8 @@ import "../../assets/styles/signup.css";
 import Footer from "../Footer";
 import Header from "../Header";
 
-const API_BASE = "http://192.168.0.122:8000";
+// const API_BASE = "http://192.168.0.122:8000";
+const API_BASE = "http://192.168.0.100:8000";
 
 const UserSignup = () => {
   const navigate = useNavigate();
@@ -205,3 +206,179 @@ const UserSignup = () => {
 
 export default UserSignup;
 
+////CAPTCHA Added
+// import React, { useState, useRef, useEffect } from "react";
+// import axios from "axios";
+// import { useNavigate } from "react-router-dom";
+// import "../../assets/styles/signup.css";
+// import Header from "../Header";
+// import Footer from "../Footer";
+// import { FaSync } from "react-icons/fa";
+
+// const API_BASE = "http://192.168.0.100:8000";
+
+// const UserSignup = () => {
+//   const navigate = useNavigate();
+
+//   const usernameRef = useRef();
+//   const emailRef = useRef();
+//   const passwordRef = useRef();
+//   const confirmPswdRef = useRef();
+//   const captchaInputRef = useRef();
+
+//   const [captcha, setCaptcha] = useState("");
+
+//   // Generate Captcha
+//   const generateCaptcha = () => {
+//     let chars =
+//       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+//     let result = "";
+//     for (let i = 1; i < 5; i++) {
+//       result += chars.charAt(Math.floor(Math.random() * chars.length));
+//     }
+//     setCaptcha(result);
+//     if (captchaInputRef.current) captchaInputRef.current.value = "";
+//   };
+
+//   useEffect(() => {
+//     generateCaptcha();
+//   }, []);
+
+//   const handleSignup = async (e) => {
+//     e.preventDefault();
+
+//     const username = usernameRef.current.value;
+//     const email = emailRef.current.value;
+//     const password = passwordRef.current.value;
+//     const confirmPassword = confirmPswdRef.current.value;
+//     const captchaInput = captchaInputRef.current.value;
+
+//     const errorStyle = "1px solid red";
+
+//     // Reset borders
+//     usernameRef.current.style.border = "none";
+//     emailRef.current.style.border = "none";
+//     passwordRef.current.style.border = "none";
+//     confirmPswdRef.current.style.border = "none";
+//     captchaInputRef.current.style.border = "none";
+
+//     // Captcha Check
+//     if (captchaInput !== captcha) {
+//       captchaInputRef.current.style.border = errorStyle;
+//       alert("Captcha not matched!");
+//       generateCaptcha();
+//       return;
+//     }
+
+//     // Password Match
+//     if (password !== confirmPassword) {
+//       confirmPswdRef.current.style.border = errorStyle;
+//       alert("Passwords do not match!");
+//       return;
+//     }
+
+//     try {
+//       await axios.post(`${API_BASE}/users/`, {
+//         username,
+//         email,
+//         password,
+//       });
+
+//       alert("Signup successful!");
+//       navigate("/");
+//     } catch (error) {
+//       console.error(error);
+
+//       if (error.response?.status === 409) {
+//         alert("Email already exists");
+//         emailRef.current.style.border = errorStyle;
+//       } else {
+//         alert("Signup failed");
+//       }
+//     }
+//   };
+
+//   return (
+//     <div className="signup-page-bg">
+//       <Header />
+
+//       <div className="signup-form-container">
+//         <h4>Create Your Account</h4>
+
+//         <form onSubmit={handleSignup} style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+//           {/* Username */}
+//           <input type="text" placeholder="Enter Username" ref={usernameRef} required />
+
+//           {/* Email */}
+//           <input type="email" placeholder="Enter Email" ref={emailRef} required />
+
+//           {/* Password */}
+//           <input type="password" placeholder="Enter Password" ref={passwordRef} required />
+
+//           {/* Confirm Password */}
+//           <input type="password" placeholder="Confirm Password" ref={confirmPswdRef} required />
+
+//           {/* CAPTCHA */}
+//           {/* CAPTCHA */}
+// <div
+//   style={{
+//     display: "flex",
+//     alignItems: "center",
+//     gap: "20px",
+//     marginTop: "10px",
+//   }}
+// >
+//   <input
+//     type="text"
+//     placeholder="Enter Captcha"
+//     ref={captchaInputRef}
+//     required
+//     style={{
+//       width: "230px",
+//       padding: "10px",
+//       border: "1px solid #ccc",
+//       borderRadius: "6px",
+//       fontSize: "16px",
+//     }}
+//   />
+
+//   <div
+//     style={{
+//       width: "230px",
+//       padding: "10px",
+//       border: "2px solid red",
+//       fontWeight: "bold",
+//       fontStyle: "italic",
+//       textDecoration: "line-through",
+//       userSelect: "none",
+//       background: "#fff",
+//       borderRadius: "6px",
+//       display: "flex",
+//       justifyContent: "space-between",
+//       alignItems: "center",
+//     }}
+//   >
+//     {captcha}
+
+//     <FaSync
+//       onClick={generateCaptcha}
+//       style={{
+//         cursor: "pointer",
+//         fontSize: "18px",
+//         marginLeft: "10px",
+//       }}
+//     />
+//   </div>
+// </div>
+
+
+//           <button type="submit">Sign Up</button>
+//         </form>
+//       </div>
+
+//       <Footer />
+//     </div>
+//   );
+// };
+
+// export default UserSignup;

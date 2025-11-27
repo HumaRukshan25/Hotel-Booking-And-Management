@@ -16,24 +16,23 @@
 }
 
 /* ==============================
-   Signup Container
+Signup Container - Wider
 ============================== */
 .signup-form-container {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(6px);
-  padding: 28px 22px;
-  border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+background: rgba(255, 255, 255, 0.82);
+backdrop-filter: blur(6px);
+padding: 35px 60px;  /* slightly wider padding */
+border-radius: 14px;
+box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 
-  max-width: 330px !important;
+max-width: 450px !important;  /* increased from 330px */
+margin: 60px auto;
+font-family: "Poppins", sans-serif;
+color: #333;
 
-  margin: 60px auto;
-  font-family: "Poppins", sans-serif;
-  color: #333;
-
-  /* Small space so form doesn't touch footer */
-  margin-bottom: 40px !important;
+margin-bottom: 40px !important;
 }
+
 
 /* Heading */
 .signup-form-container h4 {

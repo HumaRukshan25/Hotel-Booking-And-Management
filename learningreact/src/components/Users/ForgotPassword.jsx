@@ -6,7 +6,8 @@ import Footer from "../Footer";
 import Header from "../Header";
 
  // const API_BASE = "http://127.0.0.1:8000";
-const API_BASE = "http://192.168.0.122:8000";
+// const API_BASE = "http://192.168.0.122:8000";
+const API_BASE = "http://192.168.0.100:8000";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");

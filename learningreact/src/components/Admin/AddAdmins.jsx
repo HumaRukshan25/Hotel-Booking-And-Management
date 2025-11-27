@@ -580,12 +580,12 @@ const AddAdmins = () => {
         <button type="submit">{editId ? "Update Admin" : "Add Admin"}</button>
       </form>
 
-      <h2  style={{ textAlign: "center", color:"maroon" }}>All Admins</h2>
+      <h2  style={{ textAlign: "center", color:"maroon",marginBottom:"5px" }}>All Admins</h2>
        
 
       <table>
         <thead>
-          <tr>
+          <tr style={{color:"black"}}>
             <th>ID</th>
             <th>Username</th>
             <th>Email</th>
@@ -596,7 +596,7 @@ const AddAdmins = () => {
         <tbody>
           {admins.map((admin) => (
             <tr key={admin.id}>
-              <td>{admin.id}</td>
+              <td style={{color:"black"}}>{admin.id}</td>
               <td>{admin.username}</td>
               <td>{admin.email}</td>
               <td>
