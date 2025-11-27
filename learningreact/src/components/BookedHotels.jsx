@@ -3,8 +3,8 @@ import axios from "axios";
 import "../assets/styles/bookedhotels.css";
 
 // const API_BASE = "http://127.0.0.1:8000";
-const API_BASE = "http://192.168.0.122:8000"; // your backend machine's LAN IP
-
+// const API_BASE = "http://192.168.0.122:8000"; // your backend machine's LAN IP
+const API_BASE = "http://192.168.0.100:8000";
 
 const BookedHotels = () => {
   const [bookedHotels, setBookedHotels] = useState([]);

@@ -4,7 +4,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../assets/styles/hotels.css";
 
 // const API_BASE = "http://127.0.0.1:8000";
-const API_BASE = "http://192.168.0.122:8000"; // use your LAN IP
+// const API_BASE = "http://192.168.0.122:8000"; // use your LAN IP
+const API_BASE = "http://192.168.0.100:8000"; 
 
 const Hotels = () => {
   const [hotels, setHotels] = useState([]);

@@ -103,7 +103,8 @@ import Footer from "../components/Footer";
 
 
 // const API_BASE = "http://127.0.0.1:8000";
-const API_BASE = "http://192.168.0.122:8000"; // replace with your machine's LAN IP
+// const API_BASE = "http://192.168.0.122:8000"; // replace with your machine's LAN IP
+const API_BASE = "http://192.168.0.100:8000";
 
 const HotelsFooter = () => {
   const [hotels, setHotels] = useState([]);

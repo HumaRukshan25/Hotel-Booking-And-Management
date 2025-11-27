@@ -4,7 +4,8 @@ import "../assets/styles/users.css";
 import axios from "axios";
 
 // const API_BASE = "http://127.0.0.1:8000/users/";
-const API_BASE = "http://192.168.0.122:8000/users/"; // your backend machine's LAN IP
+// const API_BASE = "http://192.168.0.122:8000/users/"; // your backend machine's LAN IP
+const API_BASE = "http://192.168.0.100:8000/users/";
 
 
 const Users = () => {

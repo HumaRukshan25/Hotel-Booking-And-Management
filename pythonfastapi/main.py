@@ -28,6 +28,7 @@ origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
     "http://192.168.0.122:5173",  # React frontend IP on your LAN
+    "http://192.168.0.100:5173"
 ]
 
 app.add_middleware(

@@ -98,7 +98,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { FaUserCircle } from "react-icons/fa";
 
-const API_BASE = "http://192.168.0.122:8000/users/";
+// const API_BASE = "http://192.168.0.122:8000/users/";
+const API_BASE = "http://192.168.0.100:8000/users/";
 
 const AddUser = () => {
   const [formData, setFormData] = useState({
