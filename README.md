@@ -95,6 +95,23 @@ Choose JavaScript
     
 Browser: http://localhost:5173/
 
+
+
+
+/**********************************************************************************************************************************************/
+If u want others to test ur application  for finding bugs 
+u have to  change the API_base URL  in all code backend(main.py) and frontend  to  http://192.168.0.100:8000
+100 is taken  from the current device IP address
+
+To run backend server,  enter  uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+To run a React application,  enter  npm run dev -- --host
+u will get  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://192.168.0.100:5173/
+
+To view the application,  http://192.168.0.100:5173/
+
+For Swagger, use this  http://192.168.0.100:8000/docs
    
 
 
