@@ -86,3 +86,32 @@
   font-size: 70px;
   color: #4a4a4a;
 }
+
+/*  */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 45px !important; /* space inside the input for eye icon */
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.password-wrapper i {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #777;
+  background: transparent; /* so it looks inside input */
+  pointer-events: auto;
+}
+
+.password-wrapper i:hover {
+  color: #000;
+}

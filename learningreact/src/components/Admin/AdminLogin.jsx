@@ -75,9 +75,108 @@
 
 // export default AdminLogin;
 
-import React, { useRef } from "react";
+// import React, { useRef } from "react";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+
+// // const API_BASE = "http://127.0.0.1:8000";
+// // const API_BASE = "http://192.168.0.122:8000";
+// const API_BASE = "http://192.168.0.100:8000";
+
+// const AdminLogin = () => {
+//   const emailRef = useRef();
+//   const pswdRef = useRef();
+//   const navigate = useNavigate();
+
+//   const adminLogin = async (e) => {
+//     e.preventDefault();
+
+//     // Reset input borders
+//     emailRef.current.style.border = "none";
+//     pswdRef.current.style.border = "none";
+
+//     const email = emailRef.current.value;     // Case-sensitive email
+//     const password = pswdRef.current.value;  // Case-sensitive password
+//     const errorStyle = "solid 1px red";
+
+//     try {
+//       const response = await axios.post(`${API_BASE}/admin/login`, {
+//         email,
+//         password,
+//       });
+
+//       alert("Admin logged in successfully!");
+//       navigate("/adminportal");
+//     } catch (error) {
+//       console.error(error);
+
+//       // Highlight fields on error
+//       emailRef.current.style.border = errorStyle;
+//       pswdRef.current.style.border = errorStyle;
+
+//       if (error.response?.data?.detail) {
+//         alert(error.response.data.detail);
+//       } else {
+//         alert("Login failed");
+//       }
+//     }
+//   };
+
+//   return (
+//     <div className="admin-form">
+//       <form onSubmit={adminLogin}>
+//         <input
+//           type="email"
+//           placeholder="Enter admin email address"
+//           ref={emailRef}
+//           required
+//         />
+//         <input
+//           type="password"
+//           placeholder="Enter password"
+//           ref={pswdRef}
+//           required
+//         />
+//         <button
+//           type="submit"
+//           style={{
+//             width: "70%",
+//             display: "block",
+//             margin: "2vh auto",
+//             padding: "12px",
+//             fontSize: "18px",
+//             fontWeight: "bold",
+//             cursor: "pointer",
+//             color: "white",
+//             border: "none",
+//             borderRadius: "8px",
+//             background: "linear-gradient(90deg, #d54952ff, #7f1717ff)",
+//             transition: "transform 0.25s ease, box-shadow 0.25s ease",
+//           }}
+//           onMouseOver={(e) => {
+//             e.target.style.transform = "scale(1.05)";
+//             e.target.style.boxShadow = "0px 4px 12px rgba(182, 0, 9, 0.6)";
+//           }}
+//           onMouseOut={(e) => {
+//             e.target.style.transform = "scale(1)";
+//             e.target.style.boxShadow = "none";
+//           }}
+//         >
+//           Admin Login
+//         </button>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default AdminLogin;
+
+
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 // const API_BASE = "http://127.0.0.1:8000";
 // const API_BASE = "http://192.168.0.122:8000";
@@ -88,29 +187,26 @@ const AdminLogin = () => {
   const pswdRef = useRef();
   const navigate = useNavigate();
 
+  const [showPassword, setShowPassword] = useState(false); // Toggle
+
   const adminLogin = async (e) => {
     e.preventDefault();
 
-    // Reset input borders
     emailRef.current.style.border = "none";
     pswdRef.current.style.border = "none";
 
-    const email = emailRef.current.value;     // Case-sensitive email
-    const password = pswdRef.current.value;  // Case-sensitive password
+    const email = emailRef.current.value;
+    const password = pswdRef.current.value;
     const errorStyle = "solid 1px red";
 
     try {
-      const response = await axios.post(`${API_BASE}/admin/login`, {
-        email,
-        password,
-      });
+      await axios.post(`${API_BASE}/admin/login`, { email, password });
 
       alert("Admin logged in successfully!");
       navigate("/adminportal");
     } catch (error) {
       console.error(error);
 
-      // Highlight fields on error
       emailRef.current.style.border = errorStyle;
       pswdRef.current.style.border = errorStyle;
 
@@ -131,12 +227,31 @@ const AdminLogin = () => {
           ref={emailRef}
           required
         />
-        <input
-          type="password"
-          placeholder="Enter password"
-          ref={pswdRef}
-          required
-        />
+
+        {/* Password with eye icon */}
+        <div style={{ position: "relative", width: "100%" }}>
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Enter password"
+            ref={pswdRef}
+            required
+           
+          />
+
+          <i
+            className={`bi ${showPassword ? "bi-eye" : "bi-eye-slash"}`}
+            onClick={() => setShowPassword(!showPassword)}
+            style={{
+              position: "absolute",
+              right: "63px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              cursor: "pointer",
+              fontSize: "20px",
+            }}
+          ></i>
+        </div>
+
         <button
           type="submit"
           style={{
@@ -170,6 +285,7 @@ const AdminLogin = () => {
 };
 
 export default AdminLogin;
+
 
 ////CAPTCHA Added
 // import React, { useRef, useState, useEffect } from "react";

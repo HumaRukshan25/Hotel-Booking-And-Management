@@ -95,3 +95,27 @@
 .addusers td button:hover {
   opacity: 0.8;
 }
+/*  */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-input {
+  /* width: 100%; */
+  padding-right: 50px; /* space for icon */
+}
+
+.eye-icon {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+  color: #444;
+}
+
+.eye-icon:hover {
+  color: #000;
+}

@@ -112,12 +112,130 @@
 // export default UserLogin;
 
 
-import React, { useRef, useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+// import React, { useRef, useState } from 'react';
+// import axios from 'axios';
+// import { useNavigate } from 'react-router-dom';
 
-// const API_BASE = 'http://127.0.0.1:8000';
-// const API_BASE = "http://192.168.0.122:8000";
+// // const API_BASE = 'http://127.0.0.1:8000';
+// // const API_BASE = "http://192.168.0.122:8000";
+// const API_BASE = "http://192.168.0.100:8000";
+
+// const UserLogin = () => {
+//   const navigate = useNavigate();
+//   const emailRef = useRef();
+//   const passwordRef = useRef();
+//   const [loading, setLoading] = useState(false);
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     setLoading(true);
+
+//     // Reset borders
+//     emailRef.current.style.border = 'none';
+//     passwordRef.current.style.border = 'none';
+
+//     const errorStyle = 'solid 1px red';
+
+//     const email = emailRef.current.value;
+//     const password = passwordRef.current.value;
+
+//     if (!email || !password) {
+//       alert('Please enter both email and password');
+//       setLoading(false);
+//       return;
+//     }
+
+//     try {
+//       const response = await axios.post(`${API_BASE}/users/login`, {
+//         email,
+//         password,
+//       });
+
+//       const loggedUser = response.data.user;
+
+//       // Save user info
+//       localStorage.setItem('userId', loggedUser.id);
+//       localStorage.setItem('username', loggedUser.username);
+
+//       alert(`Welcome ${loggedUser.username}! Logged in successfully.`);
+//       navigate('/usersportal');
+
+//     } catch (error) {
+//       console.error(error);
+
+//       if (error.response?.data?.detail) {
+//         alert(error.response.data.detail);
+
+//         // Highlight error fields
+//         emailRef.current.style.border = errorStyle;
+//         passwordRef.current.style.border = errorStyle;
+//       } else {
+//         alert('Login failed. Please try again.');
+//       }
+
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   return (
+//     <div className="user-form">
+//       <form onSubmit={handleSubmit}>
+//         <input
+//           ref={emailRef}
+//           type="email"
+//           placeholder="Enter user email address"
+//           required
+//         />
+
+//         <input
+//           ref={passwordRef}
+//           type="password"
+//           placeholder="Enter password"
+//           required
+//         />
+
+//         <button
+//           disabled={loading}
+//           style={{
+//             width: "70%",
+//             display: "block",
+//             margin: "2vh auto",
+//             padding: "12px",
+//             fontSize: "18px",
+//             fontWeight: "bold",
+//             cursor: "pointer",
+//             color: "white",
+//             border: "none",
+//             borderRadius: "8px",
+//             background: "linear-gradient(90deg, #d54952ff, #7f1717ff)",
+//             transition: "transform 0.25s ease, box-shadow 0.25s ease"
+//           }}
+//           onMouseOver={(e) => {
+//             e.target.style.transform = "scale(1.05)";
+//             e.target.style.boxShadow = "0px 4px 12px rgba(182, 0, 9, 0.6)";
+//           }}
+//           onMouseOut={(e) => {
+//             e.target.style.transform = "scale(1)";
+//             e.target.style.boxShadow = "none";
+//           }}
+//         >
+//           {loading ? "Logging in..." : "User Login"}
+//         </button>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default UserLogin;
+
+
+// 
+import React, { useRef, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "bootstrap-icons/font/bootstrap-icons.css";
+
 const API_BASE = "http://192.168.0.100:8000";
 
 const UserLogin = () => {
@@ -126,21 +244,24 @@ const UserLogin = () => {
   const passwordRef = useRef();
   const [loading, setLoading] = useState(false);
 
+  // toggle password
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     // Reset borders
-    emailRef.current.style.border = 'none';
-    passwordRef.current.style.border = 'none';
+    emailRef.current.style.border = "none";
+    passwordRef.current.style.border = "none";
 
-    const errorStyle = 'solid 1px red';
+    const errorStyle = "solid 1px red";
 
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
 
     if (!email || !password) {
-      alert('Please enter both email and password');
+      alert("Please enter both email and password");
       setLoading(false);
       return;
     }
@@ -153,26 +274,22 @@ const UserLogin = () => {
 
       const loggedUser = response.data.user;
 
-      // Save user info
-      localStorage.setItem('userId', loggedUser.id);
-      localStorage.setItem('username', loggedUser.username);
+      localStorage.setItem("userId", loggedUser.id);
+      localStorage.setItem("username", loggedUser.username);
 
       alert(`Welcome ${loggedUser.username}! Logged in successfully.`);
-      navigate('/usersportal');
-
+      navigate("/usersportal");
     } catch (error) {
       console.error(error);
 
       if (error.response?.data?.detail) {
         alert(error.response.data.detail);
 
-        // Highlight error fields
         emailRef.current.style.border = errorStyle;
         passwordRef.current.style.border = errorStyle;
       } else {
-        alert('Login failed. Please try again.');
+        alert("Login failed. Please try again.");
       }
-
     } finally {
       setLoading(false);
     }
@@ -188,12 +305,29 @@ const UserLogin = () => {
           required
         />
 
-        <input
-          ref={passwordRef}
-          type="password"
-          placeholder="Enter password"
-          required
-        />
+        <div style={{ position: "relative", width: "100%" }}>
+          <input
+            ref={passwordRef}
+            type={showPassword ? "text" : "password"}
+            placeholder="Enter password"
+            required
+        
+          />
+
+          {/* Eye icon */}
+          <i
+            className={`bi ${showPassword ? "bi-eye" : "bi-eye-slash"}`}
+            style={{
+              position: "absolute",
+              right: "63px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              cursor: "pointer",
+              fontSize: "20px",
+            }}
+            onClick={() => setShowPassword(!showPassword)}
+          ></i>
+        </div>
 
         <button
           disabled={loading}
@@ -209,7 +343,7 @@ const UserLogin = () => {
             border: "none",
             borderRadius: "8px",
             background: "linear-gradient(90deg, #d54952ff, #7f1717ff)",
-            transition: "transform 0.25s ease, box-shadow 0.25s ease"
+            transition: "transform 0.25s ease, box-shadow 0.25s ease",
           }}
           onMouseOver={(e) => {
             e.target.style.transform = "scale(1.05)";
@@ -228,4 +362,3 @@ const UserLogin = () => {
 };
 
 export default UserLogin;
-
