@@ -43,7 +43,7 @@
 
 /* Hero content title */
 .title {
-  font-size: 4rem;           /* slightly responsive size */
+  font-size: 9rem;           /* slightly responsive size */
   font-weight: 700;
   margin-bottom: 15px;
   letter-spacing: 2px;
@@ -55,7 +55,7 @@
 .subtitle {
   font-size: 1.5rem;
   margin-bottom: 25px;
-  color: #fff9f9;            /* soft white for contrast */
+  color: #faf7f7;            /* soft white for contrast */
   opacity: 0.85;
   text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
   line-height: 1.4;

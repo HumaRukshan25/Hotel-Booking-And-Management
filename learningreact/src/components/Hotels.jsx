@@ -171,12 +171,12 @@ const Hotels = () => {
                   <p><strong>Price:</strong> ₹{price}</p>
 
                   <div>
-                    <strong>Rating:</strong> {rating}
+                     {/* <strong>Rating:</strong>{rating} */}{rating}
                     {renderStars(rating)}
                   </div>
 
                   <p><strong>Description:</strong> {description}</p>
-                  <div style={{ marginTop: 12, display: "flex", gap: "8px" }}>
+                  {/* <div style={{ marginTop: 12, display: "flex", gap: "8px" }}>
                     <button onClick={() => readHotel(id)}>View</button>
                     {isAdmin && (
                       <>
@@ -184,7 +184,29 @@ const Hotels = () => {
                         <button style={{ background: "red", color: "white" }} onClick={() => deleteHotel(id, name)}>Delete</button>
                       </>
                     )}
-                  </div>
+                  </div> */}
+                  <div className="hotel-buttons">
+  <button  style={{ width:"80px"}} onClick={() => readHotel(id)}>View</button>
+
+  {isAdmin && (
+    <>
+      <button
+        style={{ background: "orange", color: "white" ,width:"80px"}}
+        onClick={() => updateHotel(id)}
+      >
+        Update
+      </button>
+
+      <button
+        style={{ background: "red", color: "white" ,width:"80px"}}
+        onClick={() => deleteHotel(id, name)}
+      >
+        Delete
+      </button>
+    </>
+  )}
+</div>
+
                 </div>
               </div>
             );

@@ -476,14 +476,24 @@ const ReadHotels = () => {
             <label>
               <strong>Select Check-in:</strong>
             </label>
-            <input
+            {/* <input
               type="date"
               value={checkIn}
               onChange={(e) => {
                 setCheckIn(e.target.value);
                 setCheckOut("");
               }}
-            />
+            /> */}
+
+             <input
+      type="date"
+      value={checkIn}
+      min={new Date().toISOString().split("T")[0]}   // ⛔ Cannot select past date
+      onChange={(e) => {
+        setCheckIn(e.target.value);
+        setCheckOut("");
+      }}
+    />
 
             <label>
               <strong>Select Check-out:</strong>

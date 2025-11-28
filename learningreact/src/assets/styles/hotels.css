@@ -1,36 +1,75 @@
-.hotels-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 22px;
-  padding: 25px;
+/* ===========================
+   MAIN CONTAINER
+=========================== */
+.hotels-page {
+  padding: 20px;
   background: #f4f6f9;
   min-height: 100vh;
 }
 
+/* ===========================
+   FILTER / SORT SECTION
+=========================== */
+.filter-sort-container {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 25px;
+  background: #ffffff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  flex-wrap: wrap;
+  align-items: center;
+}
 
+.filter-sort-container input,
+.filter-sort-container select {
+  flex: 1 1 230px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  background: #f9f9f9;
+}
+
+.filter-sort-container select {
+  cursor: pointer;
+}
+
+/* ===========================
+   HOTEL GRID
+=========================== */
+.hotels-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 25px;
+  padding: 10px;
+}
+
+/* ===========================
+   HOTEL CARD  (NO HOVER EFFECT)
+=========================== */
 .hotel-card {
   background: #ffffff;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
-  transition: transform 0.3s ease;
-  cursor: pointer;
 }
 
-.hotel-card:hover {
-  transform: translateY(-6px);
-}
-
-
+/* ===========================
+   IMAGE SECTION (NO HOVER)
+=========================== */
 .hotel-image img {
   width: 100%;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
 }
 
-
+/* ===========================
+   TEXT / DETAILS
+=========================== */
 .hotel-info {
-  padding: 15px;
+  padding: 16px;
 }
 
 .hotel-info h3 {
@@ -45,89 +84,56 @@
   font-size: 15px;
 }
 
-
-button {
+/* ===========================
+   BUTTONS
+=========================== */
+.hotel-info button {
   border: none;
   padding: 8px 12px;
   border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
-  transition: 0.2s ease-in-out;
 }
 
-button:hover {
-  opacity: 0.8;
-}
-
-
-button:nth-child(1) {
+/* View */
+.hotel-info button:nth-child(1) {
   background-color: #3f1594;
   color: white;
 }
 
-button:nth-child(2) {
+/* Update */
+.hotel-info button:nth-child(2) {
   background-color: #ff9800;
   color: white;
 }
 
-button:nth-child(3) {
+/* Delete */
+.hotel-info button:nth-child(3) {
   background-color: #e53935;
   color: white;
 }
 
+/* ===========================
+   ADD HOTEL BUTTON
+=========================== */
 .add-hotel-btn {
   padding: 10px 18px;
-  background-color: #800000; /* Maroon color */
+  background-color: #800000;
   color: white;
   border-radius: 6px;
   margin-bottom: 20px;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s ease-in-out;
 }
 
 .add-hotel-btn:hover {
-  background-color: #a00000; /* Slightly lighter on hover */
-  transform: translateY(-2px);
+  opacity: 0.9;
 }
 
-/* filter/search  by hotel name ,location and sort  by price ,rating  */
-
-
-.filter-sort-container {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 25px;
-  background: #ffffff;
-  padding: 15px 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  align-items: center;
-  flex-wrap: nowrap;
-}
-
-.filter-sort-container input,
-.filter-sort-container select {
-  flex: 1 1 200px;
-  padding: 10px 14px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  font-size: 14px;
-  background: #f9f9f9;
-}
-
-.filter-sort-container select {
-  cursor: pointer;
-}
-
-.hotels-page {
-  padding: 20px;
-}
-
-/* for star rating  */
-
-/* ⭐ STAR RATING STYLE */
+/* ===========================
+   STAR RATING
+=========================== */
 .stars {
   display: inline-flex;
   margin-left: 6px;
@@ -136,39 +142,48 @@ button:nth-child(3) {
 .star {
   font-size: 20px;
   color: transparent;
-  /* hollow star */
   -webkit-text-stroke: 1px #000;
-  /* black border */
   margin-right: 2px;
 }
 
 .star.filled {
   color: gold;
-  /* golden filled star */
   -webkit-text-stroke: 1px gold;
 }
+
 /*  */
-/* Enhanced Hover Effect */
+
+/* Make all hotel cards equal height */
 .hotel-card {
-  background: #ffffff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.12);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, scale 0.3s ease;
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.hotel-card:hover {
-  transform: translateY(-8px);
-  scale: 1.03;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
-}
-
-/* Image zoom on hover */
-.hotel-card:hover .hotel-image img {
-  transform: scale(1.08);
-}
-
+/* Make image fixed height */
 .hotel-image img {
-  transition: transform 0.4s ease;
+  height: 220px;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Make the content take remaining space */
+.hotel-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Description area should expand but not affect button alignment */
+.hotel-description {
+  flex: 1;
+  margin-bottom: 10px;
+}
+
+/* Buttons aligned at same bottom position */
+.hotel-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 10px;
 }

@@ -277,7 +277,7 @@ const UserLogin = () => {
       localStorage.setItem("userId", loggedUser.id);
       localStorage.setItem("username", loggedUser.username);
 
-      alert(`Welcome ${loggedUser.username}! Logged in successfully.`);
+      // alert(`Welcome ${loggedUser.username}! Logged in successfully.`);
       navigate("/usersportal");
     } catch (error) {
       console.error(error);

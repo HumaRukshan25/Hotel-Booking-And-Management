@@ -202,7 +202,7 @@ const AdminLogin = () => {
     try {
       await axios.post(`${API_BASE}/admin/login`, { email, password });
 
-      alert("Admin logged in successfully!");
+      // alert("Admin logged in successfully!");
       navigate("/adminportal");
     } catch (error) {
       console.error(error);
